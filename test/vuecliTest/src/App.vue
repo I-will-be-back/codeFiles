@@ -1,11 +1,5 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <!-- <p>导航 ：
-      <router-link to="/">首页</router-link> | 
-      <router-link to="/xiaochao/params/xiaochao">hi页面</router-link> |
-    </p> -->
-    <!-- <hr> -->
     <div id="navigation">
       <div id="navigation-image"></div>
       <el-menu id="navigation-nav" mode="horizontal" collapse-transition="false">
@@ -48,39 +42,29 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 } */
+#app{
+  min-width: 900px;
+}
 
 #navigation{
   background-color: rgba(0,0,0,.1);
-  height: 60px;
+  height: 50px;
   display: flex;
-  /* min-width: 900px; */
-  justify-content:flex-start;
+  justify-content:space-between;
 }
 
 #navigation-image{
-  height: 100%;
-  width: 120px;
-  background: url('./assets/logo.png') ;
-  /* background-position: center; */
+  min-width: 50px;
+  background: url('./assets/MoMeng.jpg') ;
   background-size: 100% 100%;
 }
 
-/* #navigation-image>img{
-  height: 100%;
-} */
-
 #navigation-nav{
-  height: 60px;
-  /* width: 500px; */
-}
-
-#navigation-nav>.el-menu-item{
-  /* widows: 100px; */
-  background-color: aliceblue;
+  min-width: 400px;
 }
 
 #navigation-button{
-  /* width: 300px; */
+  min-width: 300px;
 }
 
 
