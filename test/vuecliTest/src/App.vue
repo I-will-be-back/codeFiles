@@ -55,7 +55,7 @@ export default {
 
 #navigation-image{
   min-width: 50px;
-  background: url('./assets/MoMeng.jpg') ;
+  background: url('./assets/MoMeng.jpg');
   background-size: 100% 100%;
 }
 

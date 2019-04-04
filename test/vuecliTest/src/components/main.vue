@@ -9,7 +9,7 @@
       <div id="main-content-introduction">
         <h3>陌梦介绍</h3>
         <hr />
-        <p>skgnkgnfdkngfdlkgassjgnfdkjgdfngjkfdngkjnasdsaddsdfdsfsdfdsfsdfsdfsadadsaddlkgndlk</p>
+        <p>{{ introduction }}</p>
         <el-button type="primary">主要按钮</el-button>
       </div>
       <el-tabs id="main-content-message" v-model="activeName" @tab-click="handleClick">
@@ -47,7 +47,10 @@ export default {
   data() {
     return {
       activeName: 'first',
-      message:[{content:'sadsdfgfdgfdgfdgfdgfdasdsasadasdsadadasddsdadgssdfad11',time:'2019-4-1'},
+      introduction:'skgnkgnfdkngfdlkgassjgnfdkjgdfngjkfsdfdsfdsfsdfdngkjnasdasdsadsdsaddfsdfdsfdssdfdsfsdfdsfdsfdsfsdfdsfdsfdsfsdfdsfdsfsdfsdfsadadsaddlkgndlk',
+      message:[{content:'sadsdfgfdgfdgfdsfdsfsdfsdasdsadadasddsdadgssdfad11',time:'2019-4-1'},
+          {content:'dsad11',time:'2019-4-2'},
+          {content:'errgeadsad11',time:'2019-4-3'},
           {content:'dsad11',time:'2019-4-2'},
           {content:'errgeadsad11',time:'2019-4-3'}],
       circle:[{content:'gfhgfhfgh'},{content:'fdgfhghgfhgfhfgh'},
