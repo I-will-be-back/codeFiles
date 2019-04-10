@@ -38,7 +38,7 @@
         <h3>{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>
-    <div id="copyright">江西陌梦教育科技有限公司 小超 @copyright 2019</div>
+    <div id="copyright">江西陌梦教育科技有限公司 小胖超 @copyright 2019</div>
   </div>
 </template>
 
