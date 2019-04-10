@@ -2,7 +2,7 @@
   <div id="app">
     <div id="navigation">
       <div id="navigation-image"></div>
-      <el-menu id="navigation-nav" mode="horizontal" collapse-transition="false">
+      <el-menu id="navigation-nav" mode="horizontal">
         <el-menu-item index="1">处理中心</el-menu-item>
         <el-submenu index="2">
           <template slot="title">我的工作台</template>

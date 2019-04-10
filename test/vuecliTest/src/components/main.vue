@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-carousel indicator-position="outside">
-      <el-carousel-item v-for="item in 4" :key="item">
+      <el-carousel-item v-for="item in 4" :key="item.name">
         <h3>{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>
@@ -12,9 +12,9 @@
         <p>{{ introduction }}</p>
         <el-button type="primary">主要按钮</el-button>
       </div>
-      <el-tabs id="main-content-message" v-model="activeName" @tab-click="handleClick">
+      <el-tabs id="main-content-message" v-model="activeName">
         <el-tab-pane label="用户管理" name="first">
-          <p v-for="item in message" :key="item">
+          <p v-for="item in message" :key="item.name">
             <span class="main-content-message-content">{{ item.content }}</span>
             <span class="main-content-message-time">{{ item.time }}</span>
           </p>
@@ -27,14 +27,14 @@
       <h2>陌梦管理制度</h2>
       <h3>开心|顺心|舒心</h3>
       <div id="third-circle">
-        <div v-for="item in circle" :key="item" class="aaa">
+        <div v-for="item in circle" :key="item.name" class="aaa">
           <div></div>
           <p>{{ item.content}}</p>
         </div>
       </div>
     </div>
     <el-carousel :interval="4000" type="card" height="200px">
-      <el-carousel-item v-for="item in 3" :key="item">
+      <el-carousel-item v-for="item in 3" :key="item.name">
         <h3>{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>
@@ -59,11 +59,6 @@ export default {
       {content:'gfhgfhffghgfhgh'},{content:'fdgfhghgfhgfhfgh'},
      ],
     };
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    }
   }
 }
 </script>
