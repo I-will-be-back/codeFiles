@@ -48,3 +48,5 @@
 ### !/fw/bin/
 ### !/fw/sf/
 ### 说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；注意要先对bin/的父目录使用!规则，使其不被排除。
+
+[gitignore链接](https://www.cnblogs.com/kevingrace/p/5690241.html)
