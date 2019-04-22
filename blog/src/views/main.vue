@@ -1,15 +1,21 @@
 <template>
   <div>
-    <leftNav />
+    <leftnav />
+    <router-link to="/">Home</router-link>
+    <router-view />
+    <copyright />
   </div>
 </template>
 
 <script>
-import leftNav from '@/views/leftNav.vue'
+import leftnav from '@/views/leftnav.vue'
+import copyright from '@/views/copyright.vue'
+import home from '@/views/home.vue'
+
 export default {
   name: 'main',
   components: {
-    leftNav
+    leftnav,copyright,home
   }
 }
 </script>
