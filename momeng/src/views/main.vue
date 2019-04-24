@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div id="mainPage">
     <el-carousel id="el-carousel" :interval="0" indicator-position="outside" :height="height + 'px'">
       <el-carousel-item class="el-carousel-item" v-for="value in images" :key="value.name">
-        <img class="carouselImage" :src=value>
+        <img class="carouselImage" :src="value">
       </el-carousel-item>
     </el-carousel>
     <div id="main-content">
@@ -15,17 +15,26 @@
       <el-tabs id="main-content-message" v-model="activeName">
         <el-tab-pane label="用户管理" name="first">
           <p v-for="item in message" :key="item.name">
-            <span class="main-content-message-content">{{ item.content }}</span>
-            <span class="main-content-message-time">{{ item.time }}</span>
+            <router-link :to="{path:item.href}">
+              <span class="main-content-message-content">{{ item.content }}</span>
+              <span class="main-content-message-time">{{ item.time }}</span>
+            </router-link>
           </p>
         </el-tab-pane>
         <el-tab-pane label="配置管理" name="second">
-           <p>1111</p>
+          <p v-for="item in message" :key="item.name">
+            <router-link :to="{path:item.href}">
+              <span class="main-content-message-content">{{ item.content }}</span>
+              <span class="main-content-message-time">{{ item.time }}</span>
+            </router-link>
+          </p>
         </el-tab-pane>
         <el-tab-pane label="角色管理" name="third">
            <p v-for="item in message" :key="item.name">
-            <span class="main-content-message-content">{{ item.content }}</span>
-            <span class="main-content-message-time">{{ item.time }}</span>
+             <router-link :to="{path:item.href}">
+              <span class="main-content-message-content">{{ item.content }}</span>
+              <span class="main-content-message-time">{{ item.time }}</span>
+            </router-link>
           </p>
         </el-tab-pane>
       </el-tabs>
@@ -51,16 +60,17 @@
 
 <script>
 export default {
+  name:'main',
   data() {
     return {
       images:[require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg')],
       activeName: 'first',
       introduction:'skgnkgnfdkngfdlkgassjgnfdkjgdfngjkfsdfdsfdsfsdfdngkjnasdasdsadsdsaddfsdfdsfdssdfdsfsdfdsfdsfdsfsdfdsfdsfdsfsdfdsfdsfsdfsdfsadadsaddlkgndlk',
-      message:[{content:'sadsdfgfdgfdgfdsfdsfsdfsdasdsadadasddsdadgssdfad11',time:'2019-4-1'},
-          {content:'dsad11',time:'2019-4-2'},
-          {content:'errgeadsad11',time:'2019-4-3'},
-          {content:'dsad11',time:'2019-4-2'},
-          {content:'errgeadsad11',time:'2019-4-3'}],
+      message:[{content:'sadsdfgfdgfdgfdsfdsfsdfsdasdsadadasddsdadgssdfad11',time:'2019-4-1',href:'/view'},
+          {content:'dsad11',time:'2019-4-2',href:'/view'},
+          {content:'errgeadsad11',time:'2019-4-3',href:'/view'},
+          {content:'dsad11',time:'2019-4-2',href:'/view'},
+          {content:'errgeadsad11',time:'2019-4-3',href:'/view'}],
       circle:[{content:'gfhgfhfgh'},{content:'fdgfhghgfhgfhfgh'},
       {content:'gfhgfhffghgfhgh'},{content:'fdgfhghgfhgfhfgh'},
       {content:'gfhgfhfgh'},{content:'fdgfhghgfhgfhfgh'},
@@ -132,11 +142,16 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 
-#main-content-message p{
+#main-content-message p a{
+  text-decoration:none;
   padding: 0 5px;
   display: flex;
   justify-content:space-between;
-} 
+}
+
+#main-content-message p a:hover{
+  text-decoration:underline;
+}
 
 .main-content-message-content{
   width: 75%;
