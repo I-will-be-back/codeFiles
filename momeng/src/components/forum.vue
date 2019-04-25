@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="forumPage">
     <div class="title">{{ title }}</div>
     <div v-for="item in firstContent" :key="item.name">
       <img class="avatar" :src="item.avatar">

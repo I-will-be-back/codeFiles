@@ -12,8 +12,7 @@
           <el-menu-item index="2-3">选项3</el-menu-item>
         </el-submenu> -->
         <el-menu-item index="3">陌梦首页</el-menu-item>
-        <el-menu-item index="4"><router-link :to="{path:'/forum'}">评论专区</router-link> </el-menu-item>
-        <!-- <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item> -->
+        <el-menu-item index="4"><router-link :to="{path:'/postList'}">评论专区</router-link> </el-menu-item>
       </el-menu>
       <el-button-group id="navigation-button">
         <el-button type="primary">开始登录</el-button>

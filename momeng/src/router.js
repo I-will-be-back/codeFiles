@@ -24,9 +24,14 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/view.vue')
         },
         {
-          path: '/forum',
-          name: 'forum',
-          component: () => import(/* webpackChunkName: "about" */ './components/forum.vue')
+          path: '/postList',
+          name: 'postList',
+          component: () => import(/* webpackChunkName: "about" */ './components/postList.vue')
+        },
+        {
+          path:'/forum',
+          name:'forum',
+          component: () => import(/* webpackChunkName: "about" */ './components/forum.vue'),
         }
       ]
     },
@@ -39,7 +44,7 @@ export default new Router({
           path:'/postArticle',
           name:'postArticle',
           component: () => import(/* webpackChunkName: "about" */ './components/postArticle.vue'),
-        }
+        },
       ]
     }
   ]
