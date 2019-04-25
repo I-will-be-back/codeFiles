@@ -3,7 +3,7 @@
     <div id="navigation">
       <div id="navigation-image"></div>
       <el-menu id="navigation-nav" mode="horizontal">
-        <el-menu-item index="1"><router-link :to="{path:'/main'}">陌梦首页</router-link></el-menu-item>
+        <el-menu-item index="1"><router-link :to="{path:'/mainPage'}">陌梦首页</router-link></el-menu-item>
         <el-menu-item index="2">陌梦首页</el-menu-item>
         <!-- <el-submenu index="2">
           <template slot="title">我的工作台</template>
@@ -28,11 +28,9 @@
 </template>
 
 <script>
-// import mains from '@/views/main'
 
 export default {
-  name: 'home',
-  // components:{mains}
+  name: 'homePage',
 }
 
 </script>

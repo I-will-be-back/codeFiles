@@ -60,7 +60,7 @@
 
 <script>
 export default {
-  name:'main',
+  name:'mainPage',
   data() {
     return {
       images:[require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg')],

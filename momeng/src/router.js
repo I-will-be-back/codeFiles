@@ -9,14 +9,14 @@ export default new Router({
   routes: [
     {
       
-      path: '/home',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "about" */ './views/home.vue'),
+      path: '/homePage',
+      name: 'homePage',
+      component: () => import(/* webpackChunkName: "about" */ './views/homePage.vue'),
       children:[
         {
-          path: '/main',
-          name: 'main',
-          component: () => import(/* webpackChunkName: "about" */ './views/main.vue')
+          path: '/mainPage',
+          name: 'mainPage',
+          component: () => import(/* webpackChunkName: "about" */ './views/mainPage.vue')
         },
         {
           path: '/view',
