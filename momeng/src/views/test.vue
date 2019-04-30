@@ -24,7 +24,7 @@ export default {
           secondContent:[
           {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好sd棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
           {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好dsf棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你dfg好棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术哈哈超',reply:'你dfg好棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
           {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你fdg好棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
           {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好fdg棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
           {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好fdg棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
