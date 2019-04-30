@@ -14,6 +14,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/homePage.vue'),
       children:[
         {
+          path: '/login',
+          name: 'login',
+          component: () => import(/* webpackChunkName: "about" */ './views/login.vue')
+        },
+        {
           path: '/mainPage',
           name: 'mainPage',
           component: () => import(/* webpackChunkName: "about" */ './views/mainPage.vue')
@@ -46,6 +51,11 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './components/postArticle.vue'),
         },
       ]
+    },
+    {
+      path:'/test',
+      name:'test',
+      component: () => import(/* webpackChunkName: "about" */ './views/test.vue'),
     }
   ]
 })

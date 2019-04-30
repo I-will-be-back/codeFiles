@@ -10,7 +10,8 @@
         <h3>陌梦介绍</h3>
         <hr />
         <p>{{ introduction }}</p>
-        <el-button type="primary">主要按钮</el-button>
+        <p>{{ this.$store.state.text }}</p>
+        <el-button type="primary">{{ this.$store.state.button }}</el-button>
       </div>
       <el-tabs id="main-content-message" v-model="activeName">
         <el-tab-pane label="用户管理" name="first">
@@ -51,7 +52,7 @@
     </div>
     <el-carousel :interval="0" type="card" :height="height2 + 'px'">
       <el-carousel-item v-for="video in videos" :key="video.name">
-        <video id="video" :src=video controls="controls"></video>
+        <video id="video" :src="video" controls="controls"></video>
       </el-carousel-item>
     </el-carousel>
     <div id="copyright">江西陌梦教育科技有限公司 小胖超 @copyright 2019</div>
@@ -65,7 +66,7 @@ export default {
     return {
       images:[require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg')],
       activeName: 'first',
-      introduction:'skgnkgnfdkngfdlkgassjgnfdkjgdfngjkfsdfdsfdsfsdfdngkjnasdasdsadsdsaddfsdfdsfdssdfdsfsdfdsfdsfdsfsdfdsfdsfdsfsdfdsfdsfsdfsdfsadadsaddlkgndlk',
+      introduction:'skgnkgnfdkngfdlkgassjgnfdkjsfdsfsdfdsfdsfsdfsdfsadadsaddlkgndlk',
       message:[{content:'sadsdfgfdgfdgfdsfdsfsdfsdasdsadadasddsdadgssdfad11',time:'2019-4-1',href:'/view'},
           {content:'dsad11',time:'2019-4-2',href:'/view'},
           {content:'errgeadsad11',time:'2019-4-3',href:'/view'},
@@ -86,9 +87,43 @@ export default {
     //监听浏览器窗口大小改变
     window.addEventListener('resize', function() {
       let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      if(width < 900) {
+        width = 900;
+      }
       that.height = width / 3;
       that.height2 = width / 3.5;
     }, false);
+  },
+  methods: {
+    gets() {
+      this.$store.commit('gets');
+    },
+  // aaa() {
+  //     this.axios({
+  //       method:'post',
+  //       url:'http://192.168.1.105/momeng/posts/post',
+  //       data:JSON.stringify(
+  //       {
+  //       floors: [
+  //         {
+  //           content: "1",
+  //           user: "11"
+  //         }
+  //       ],
+  //       owner: "11",
+  //       title: "111"
+  //     }),
+  //     headers: {'Content-Type': 'application/json'},
+  //     xhrFields:{withCredentials:true}
+  //     })
+  //     .then(function (response) {
+  //       console.log(response.headers['set-cookie']);
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     }); 
+  //   }
   },
 
 }
