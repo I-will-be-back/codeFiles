@@ -9,13 +9,13 @@
 
 <script>
 import leftnav from '@/views/leftnav.vue'
-import copyright from '@/views/copyright.vue'
-import home from '@/views/home.vue'
+import copyright from '@/components/copyright.vue'
+//import home from '@/views/home.vue'
 
 export default {
-  name: 'main',
+  name: 'mainPage',
   components: {
-    leftnav,copyright,home
+    leftnav,copyright
   }
 }
 </script>
