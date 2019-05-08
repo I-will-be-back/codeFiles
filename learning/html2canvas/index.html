@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>html2canvas</title>
+</head>
+<body>
+  <div>这是一个网页
+    <img src="./logo.png">
+  </div>
+  <a href="javascript:;" id="renderPdf">生成pdf</a>
+  <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+  <script src="https://cdn.bootcss.com/jspdf/1.5.3/jspdf.min.js"></script>
+  <script>
+    document.getElementById('renderPdf').addEventListener('click', function() {
+      //将网页保存为图片的功能
+      html2canvas(document.body,{
+        onrendered: function (canvas) {
+          let pageData = canvas.toDataURL('image/jpeg',1.0);
+          let pdf = new jsPDF('', 'pt', 'a4');
+          pdf.addImage(pageData, 'JPEG', 0, 0, 595.28, 592.28 / canvas.width * canvas.height);
+          pdf.save('stone.pdf');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,12 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/mainPage">Main</router-link>
+    <div id="main">
+      <leftnav />
+      <router-view></router-view>
     </div>
-    <router-view/>
+    <copyright />
   </div>
 </template>
+
+<script>
+import copyright from '@/components/copyright.vue';
+import leftnav from '@/components/leftnav.vue';
+
+export default {
+  name: 'app',
+  components: {
+    copyright,leftnav
+  }
+}
+</script>
 
 <style lang="less">
 #app {
@@ -15,15 +27,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+
+#main {
+  display: flex;
 }
 </style>

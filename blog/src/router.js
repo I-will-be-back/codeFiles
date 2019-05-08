@@ -14,12 +14,22 @@ export default new Router({
       component: homePage
     },
     {
-      path: '/mainPage',
-      name: 'mainPage',
+      path: '/technology',
+      name: 'technology',
        // route level code-splitting
       // this generates a separate chunk (main.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "main" */ './views/mainPage.vue')
+      component: () => import(/* webpackChunkName: "main" */ './views/technology.vue')
+    },
+    {
+      path: '/article',
+      name: 'article',
+      component: () => import(/* webpackChunkName: "main" */ './views/article.vue')
+    },
+    {
+      path: '/otherProject',
+      name: 'otherProject',
+      component: () => import(/* webpackChunkName: "main" */ './views/otherProject.vue')
     }
   ]
 })
