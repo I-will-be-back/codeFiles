@@ -1,19 +1,18 @@
-function add(x, y) {
-  //将x,y两个数变成字符窜并倒序
-  x += '';
+function bigNumberAdd(x, y) {
+  //将x,y两个数字符串倒序
   x = x.split('').reverse().join('');
-  y += '';
   y = y.split('').reverse().join('');
-  let result = [];
   //确保前面的数的位数不小于后面的数
   if(x.length < y.length) {
-    [x,y] = [y,x];
+   [x, y] = [y, x];
   }
+  // console.log(x,y);
+  let result = [];
   let i = 0;
   //进位
   let rel = 0;
   for(; i < y.length; i++) {
-    result[i] = (+x[i]) + (+y[i]) + rel;
+    result[i] = (+x[i] || 0) + (+y[i] || 0) + rel;
     //是否进位，进位则-10并且后一位加1
     if(result[i] > 9) {
       rel = 1;
@@ -23,7 +22,7 @@ function add(x, y) {
     }
   }
   for(; i < x.length; i++) {
-    result[i] = (+x[i]) + rel;
+    result[i] = (+x[i] || 0) + rel;
     if(result[i] > 9) {
       rel = 1;
       result[i] -= 10;
@@ -39,9 +38,9 @@ function add(x, y) {
   for(let j = result.length - 1; j >= 0; j--) {
     str += result[j];
   }
-  console.log(+str);
+  console.log(str);
 }
 
-let a = 6666;
-let b = 5555;
-add(a, b);
+let a = '66651521213212621231321';
+let b = '89798789558978978713213213255212123156165156212';
+bigNumberAdd(a, b);
