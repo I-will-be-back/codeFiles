@@ -41,7 +41,7 @@
         let time = setTimeout(function() {
           clearTimeout(time);
           let menu = document.querySelector('.el-menu-vertical-demo');
-          menu.style.height = (document.documentElement.clientHeight - 39) + 'px';
+          menu.style.height = (document.documentElement.clientHeight - 166) + 'px';
         },360);
       }
       windowChange(that);

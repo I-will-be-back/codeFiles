@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <top />
     <div id="main">
       <leftnav />
       <router-view></router-view>
@@ -9,13 +10,14 @@
 </template>
 
 <script>
+import top from '@/components/top.vue';
 import copyright from '@/components/copyright.vue';
 import leftnav from '@/components/leftnav.vue';
 
 export default {
   name: 'app',
   components: {
-    copyright,leftnav
+    copyright,leftnav,top
   }
 }
 </script>
@@ -29,6 +31,7 @@ export default {
   color: #2c3e50;
   display: flex;
   flex-direction: column;
+  min-width: 600px;
 }
 
 #main {
