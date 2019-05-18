@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>送花-代理模式</title>
+</head>
+<body>
+  <script>
+  function Flower(type, count) {
+    this.type = type;
+    this.count = count;
+  }
+
+  const flowers = new Flower('红玫瑰', 11);
+
+  const weichao = {
+    name: '魏超',
+    hometown: '南昌',
+    yz: 75,
+    single: true,
+    room: '604',
+    sendFlower: function(target) {
+      // 一个功能
+      target.receiveFlower(this, flowers);
+      // 返回值
+    }
+  }
+  // talk in js 属性和方法
+  const xm = {
+    name: '小美',
+    beauty: 95,
+    happy: 55,
+    listenGoodMood: function(cb) {
+      setTimeout(() => {
+        this.happy = 90;
+        cb();
+      }, 5000)
+    },
+    receiveFlower: function(sender, flower) {
+      if (this.happy > 85) {
+        console.log('万达走一波');
+      } else {
+        console.log('你是个好人');
+      }
+    }
+  }
+
+  const xiaohong = {
+    name: '小红',
+    hometown: '南昌',
+    receiveFlower: function(sender,flower) {
+      xm.listenGoodMood(function() {
+        xm.receiveFlower(sender, flower);
+      });
+    }
+  }
+  weichao.sendFlower(xiaohong, flowers);
+  </script>
+</body>
+</html>
