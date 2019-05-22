@@ -14,23 +14,21 @@
 </template>
 
 <script>
-import moment from "moment"
-
 export default {
   data () {
     return {
      firstContent:[
-        {show:false,poster:'小胖超',avatar:require('../assets/MoMeng.jpg'),time:moment().format('YYYY年MM月DD日 h:mm'),content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
+        {show:false,poster:'小胖超',avatar:require('../assets/MoMeng.jpg'),time:this.$this.$moment().format('YYYY年MM月DD日 h:mm'),content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
           secondContent:[
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好sd棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好dsf棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术哈哈超',reply:'你dfg好棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你fdg好棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好fdg棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好fdg棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好gh棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你dfsag好棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
-          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好sad棒',time2:moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好sd棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好dsf棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术哈哈超',reply:'你dfg好棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你fdg好棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好fdg棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好fdg棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好gh棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你dfsag好棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')},
+          {who1:'小胖超',ifReply:true,who2:'技术超',reply:'你好sad棒',time2:this.$moment().format('YYYY年MM月DD日 h:mm')}, 
         ]}],
      
       currentPage : 1 ,

@@ -8,13 +8,12 @@
 </template>
 
 <script>
-import moment from "moment"
 export default {
   data() {
     return {
       author:'小胖超',
       title:'这是一篇文章就撒风华绝代风华绝代书法家看电视发挥科技',
-      time:moment().format('L'),
+      time:this.$moment().format('L'),
       content:'哈哈哈哈哈哈哈哈发动机更换发动机挂号费的空间更不能发的数据防火防盗设计费那个空间动机不能够疯狂就不能发顾客就不能发动机你发的空间给你发的几年',
     }
   },

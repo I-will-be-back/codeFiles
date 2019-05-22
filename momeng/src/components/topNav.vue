@@ -25,29 +25,24 @@ export default {
 
 </script>
 
-<style scoped>
-#topNav{
-  min-width: 900px;
-}
+<style lang="stylus" scoped>
+#topNav
+  min-width 900px
 
-#navigation{
-  background-color: rgba(0,0,0,.1);
-  height: 50px;
-  display: flex;
-  justify-content:space-between;
-}
+#navigation
+  background-color rgba(0,0,0,.1)
+  height 50px
+  display flex
+  justify-content space-between
 
-#navigation-image{
-  min-width: 50px;
-  background: url('../assets/MoMeng.jpg');
-  background-size: 100% 100%;
-}
+#navigation-image
+  min-width 50px
+  background url('../assets/MoMeng.jpg')
+  background-size 100% 100%
 
-#navigation-nav{
-  min-width: 400px;
-}
+#navigation-nav
+  min-width 400px
 
-#navigation-button{
-  min-width: 300px;
-}
+#navigation-button
+  min-width 300px
 </style>

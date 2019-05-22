@@ -77,22 +77,4 @@
     width: 200px;
     min-height: 400px;
 }
-/* 进入和退出效果 */
-.fade-enter {
-  opacity:0;
-}
-
-.fade-enter-active{
-  opacity:1;
-  transition:opacity .5s;
-}
- 
-.fade-leave{
-  opacity:1;
-}
-
-.fade-leave-active{
-  opacity:0;
-  transition:opacity .5s;
-}
 </style>

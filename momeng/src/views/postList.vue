@@ -17,13 +17,12 @@
 </template>
 
 <script>
-import moment from "moment"
 export default {
   data() {
     return {
-      post:[{href:'/forum',title:'这是一个标题',content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',author:'小胖超',time:moment().format('L')},
-      {href:'/forum',title:'这是一个标题',content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',author:'小胖超',time:moment().format('L')},
-      {href:'/forum',title:'这是一个标题',content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',author:'小胖超',time:moment().format('L')}
+      post:[{href:'/forum',title:'这是一个标题',content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',author:'小胖超',time:this.$moment().format('L')},
+      {href:'/forum',title:'这是一个标题',content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',author:'小胖超',time:this.$moment().format('L')},
+      {href:'/forum',title:'这是一个标题',content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',author:'小胖超',time:this.$moment().format('L')}
       ],
     }
   },
