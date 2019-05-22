@@ -2,17 +2,16 @@
   <div id="technology">technology</div>
 </template>
 
-<script>
-
-export default {
-  name: 'technology',
-  components: {
-
-  }
-}
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  
+})
 </script>
 
-<style scoped>
 
+<style lang="stylus" scoped>
+#technology
+  color red
 </style>
 
