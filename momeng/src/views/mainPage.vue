@@ -55,7 +55,6 @@
         <video id="video" :src="video" controls="controls"></video>
       </el-carousel-item>
     </el-carousel>
-    <div id="copyright">江西陌梦教育科技有限公司 小胖超 @copyright 2019</div>
   </div>
 </template>
 
@@ -67,11 +66,11 @@ export default {
       images:[require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg'),require('../assets/first.jpg')],
       activeName: 'first',
       introduction:'skgnkgnfdkngfdlkgassjgnfdkjsfdsfsdfdsfdsfsdfsdfsadadsaddlkgndlk',
-      message:[{content:'sadsdfgfdgfdgfdsfdsfsdfsdasdsadadasddsdadgssdfad11',time:'2019-4-1',href:'/view'},
-          {content:'dsad11',time:'2019-4-2',href:'/view'},
-          {content:'errgeadsad11',time:'2019-4-3',href:'/view'},
-          {content:'dsad11',time:'2019-4-2',href:'/view'},
-          {content:'errgeadsad11',time:'2019-4-3',href:'/view'}],
+      message:[{content:'sadsdfgfdgfdgfdsfdsfsdfsdasdsadadasddsdadgssdfad11',time:'2019-4-1',href:'/news'},
+          {content:'dsad11',time:'2019-4-2',href:'/news'},
+          {content:'errgeadsad11',time:'2019-4-3',href:'/news'},
+          {content:'dsad11',time:'2019-4-2',href:'/news'},
+          {content:'errgeadsad11',time:'2019-4-3',href:'/news'}],
       circle:[{content:'gfhgfhfgh'},{content:'fdgfhghgfhgfhfgh'},
       {content:'gfhgfhffghgfhgh'},{content:'fdgfhghgfhgfhfgh'},
       {content:'gfhgfhfgh'},{content:'fdgfhghgfhgfhfgh'},
@@ -97,33 +96,7 @@ export default {
   methods: {
     gets() {
       this.$store.commit('gets');
-    },
-  // aaa() {
-  //     this.axios({
-  //       method:'post',
-  //       url:'http://192.168.1.105/momeng/posts/post',
-  //       data:JSON.stringify(
-  //       {
-  //       floors: [
-  //         {
-  //           content: "1",
-  //           user: "11"
-  //         }
-  //       ],
-  //       owner: "11",
-  //       title: "111"
-  //     }),
-  //     headers: {'Content-Type': 'application/json'},
-  //     xhrFields:{withCredentials:true}
-  //     })
-  //     .then(function (response) {
-  //       console.log(response.headers['set-cookie']);
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     }); 
-  //   }
+    }
   },
 
 }
@@ -234,10 +207,5 @@ export default {
 #video{
   height: 100%;
   width: 100%;
-}
-
-#copyright{
-  display: flex;
-  justify-content: center;
 }
 </style>

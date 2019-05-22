@@ -25,8 +25,8 @@ export default {
 .article{
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start; */
-  align-items:center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 
 .author{

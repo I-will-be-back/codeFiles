@@ -21,33 +21,7 @@ export default {
   methods: {
     change() {
       // this.src = 'http://192.168.1.105/momeng/users/captcha?' + Math.random(); 
-    },
-    // submit() {
-    //   this.axios.defaults.withCredentials=true;
-    //   this.axios({
-    //     method:'post',
-    //     // url:'http://192.168.1.105/momeng/users/login',
-    //     data:JSON.stringify(
-    //       {
-    //     captcha: this.yan,
-    //     passwd: this.password,
-    //     username: this.number
-    //     }
-    //     ),
-    //   headers: {'Content-Type': 'application/json',
-    //   'Authorization':'kjkjklj'}
-    //   })
-    //   .then(function (response) {
-    //     let allCookies = document.cookie;
-    //     console.log(allCookies);
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    //   let aa = document.cookie;
-    //   console.log(aa);
-    // }
+    }
   },
 }
 </script>

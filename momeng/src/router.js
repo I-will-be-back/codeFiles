@@ -8,54 +8,24 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      
-      path: '/homePage',
-      name: 'homePage',
-      component: () => import(/* webpackChunkName: "about" */ './views/homePage.vue'),
-      children:[
-        {
-          path: '/login',
-          name: 'login',
-          component: () => import(/* webpackChunkName: "about" */ './views/login.vue')
-        },
-        {
-          path: '/mainPage',
-          name: 'mainPage',
-          component: () => import(/* webpackChunkName: "about" */ './views/mainPage.vue')
-        },
-        {
-          path: '/view',
-          name: 'view',
-          component: () => import(/* webpackChunkName: "about" */ './views/view.vue')
-        },
-        {
-          path: '/postList',
-          name: 'postList',
-          component: () => import(/* webpackChunkName: "about" */ './components/postList.vue')
-        },
-        {
-          path:'/forum',
-          name:'forum',
-          component: () => import(/* webpackChunkName: "about" */ './components/forum.vue'),
-        }
-      ]
+      path: '/',
+      name: 'mainPage',
+      component: () => import(/* webpackChunkName: "about" */ './views/mainPage.vue')
     },
     {
-      path:'/management',
-      name:'management',
-      component: () => import(/* webpackChunkName: "about" */ './views/management.vue'),
-      children:[
-        {
-          path:'/postArticle',
-          name:'postArticle',
-          component: () => import(/* webpackChunkName: "about" */ './components/postArticle.vue'),
-        },
-      ]
+      path: '/postList',
+      name: 'postList',
+      component: () => import(/* webpackChunkName: "about" */ './views/postList.vue')
     },
     {
-      path:'/test',
-      name:'test',
-      component: () => import(/* webpackChunkName: "about" */ './views/test.vue'),
+      path: '/forum',
+      name: 'forum',
+      component: () => import(/* webpackChunkName: "about" */ './views/forum.vue')
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: () => import(/* webpackChunkName: "about" */ './views/news.vue')
     }
   ]
 })
