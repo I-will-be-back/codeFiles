@@ -29,15 +29,29 @@
       }
       changeLikeText () {
         // console.log(this.el);
-        const likeText = this.el.querySelector('.like-text');
-        this.state.isLiked = !this.state.isLiked;
-        likeText.innerHTML = this.state.isLiked?'取消':'点赞';
+        // 太多的DOM了
+        // 没有DOM
+        this.setState({
+          isLiked: !this.state.isLiked
+        }) 
+      }
+      setState (state) {
+        // 将状态更新
+        // VM 模型 this.state 视图 View 的实时对应
+        const oldEl = this.el;
+        this.state = state;
+        this.el = this.render();
+        // DOM更新
+        if (this.onStateChange) {
+          this.onStateChange(oldEl, this.el);
+        }
+        // console.log(this.el);
       }
       // render相当于之前的dom template 必备的方法
       render () {
         this.el = createDOMFromString(`
           <button id="like-btn">
-            <span class="like-text">求赞</span>
+            <span class="like-text">${this.state.isLiked?'取消':'点赞'}</span>
           </button>
         `);
         this.el.addEventListener('click', this.changeLikeText.bind(this), false);
@@ -46,6 +60,10 @@
     }
     const likeButton1 = new LikeButton();
     wrapper.appendChild(likeButton1.render());
+    likeButton1.onStateChange = (oldEl, newEl) => {
+      wrapper.insertBefore(newEl, oldEl);
+      wrapper.removeChild(oldEl);
+    }
     const likeButton2 = new LikeButton();
     wrapper.appendChild(likeButton2.render());
   </script>

@@ -15,3 +15,8 @@ MVVM 封装了DOM(VUE REACT) 让其更高效
   constructor this.state 数据部分
   模板 render
   setData setState({})
+- 模板里数据的细化
+  es6字符窜模板 每次编译
+  setState this.render();
+  状态和模板结合的地方在模板的编译,插入数据
+  setState 驱动模板重新编译一下 数据驱动
