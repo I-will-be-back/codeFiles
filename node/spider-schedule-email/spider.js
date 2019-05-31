@@ -1,6 +1,8 @@
 const superagent = require('superagent');
 const cheerio = require('cheerio');
-
+const ejs = require('ejs');
+const fs = require('fs');
+const nodemailer = require('nodemailer');
 
 const local = 'shanghai/yangpu-district';
 const weatherBaseUrl = 'https://tianqi.moji.com/weather/china/';
@@ -81,7 +83,39 @@ function getAllDataAndSendEmail () {
   .then(alldata => {
     const [weather, one] = alldata;
     // console.log(weather, one);
+    sendEmail(weather, one);
   })
+}
+
+function sendEmail (weather, one) {
+  // 把 ejs 编译为 html
+  const template = ejs.compile(
+    fs.readFileSync('./email.ejs', 'utf8'));
+  const html = template({
+    weatherTip: weather.weatherTip,
+    threeDaysData: weather.threeDaysData
+  })
+  const transporter = nodemailer.createTransport({
+    service: 'qq',
+    port: 465, // smtp 端口号
+    auth: {
+      user: '1505013204@qq.com',
+      pass: 'cvtwornkslelhabc'
+    }
+  });
+  transporter.sendMail({
+    from: 'xiaopangchao <1505013204@qq.com>',
+    to: '1505013204@qq.com',
+    subject: '邮件',
+    html
+  }, (err, info) => {
+    if (err) {
+      console.log(err);
+      return false;
+    } else {
+      console.log('success', info);
+    }
+  });
 }
 
 getAllDataAndSendEmail();
