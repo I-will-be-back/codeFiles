@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <title>lifecycle</title>
+</head>
+<body>
+  <div id="app">
+    <input type="texr" v-model="message">
+    {{message}}
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data () {
+        return {
+          message: 'hello'
+        }
+      },
+      // 被创建之前
+      beforeCreate () {
+        console.log('beforeCreate')
+      },
+      // 已创建
+      created () {
+        console.log('created')
+      },
+      // 被挂载之前
+      beforeMount () {
+        console.log('beforeMount')
+      },
+      // 已挂载
+      mounted () {
+        console.log('mounted')
+      },
+      // 数据被更新之前
+      beforeUpdate () {
+        console.log('beforeUpdate')
+      },
+      // 数据已更新
+      updated () {
+        console.log('updated')
+      },
+      // 被销毁之前
+      beforeDestroy () {
+        console.log('beforeDestroy')
+      },
+      // 已销毁
+      destroyed () {
+        console.log('destroyed')
+      }
+    })
+  </script>
+</body>
+</html>
