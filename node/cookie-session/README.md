@@ -11,6 +11,7 @@ npm install
 服务器上面 只需要写的代码 不需要上传node_modules
 
 ## cookie
+- 用途: 会话状态管理,保存用户的个性化设置
 - 内容:name 值:value
 - 存在客户端
 - js 操作: document.cookie
@@ -24,3 +25,25 @@ npm install
 ## httpOnly: true/false 
 - 当为true时不能通过 js操作 获取cookie
 - 当为false时能通过 js操作 获取cookie
+## max-age
+- cookie在多少时间之后过期
+
+## session
+保存在服务端的
+依靠后台语言实现
+有很多个session 很多用户 通过sessionID进行关联
+
+## koa 第三方中间件
+ctx req + res
+ctx: {
+  req,
+  res
+}
+大多数的情况下是往 ctx 上面扩展
+扩展koa-views ejs后
+ctx: {
+  req,
+  res,
+  render: () => {}
+}
+调用提供的 render()
