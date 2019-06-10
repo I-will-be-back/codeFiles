@@ -1,0 +1,1 @@
+vue init webpack-simple swy-ui

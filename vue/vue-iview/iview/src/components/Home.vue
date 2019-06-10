@@ -6,16 +6,25 @@
           <div class="layout-logo-left">
             <span class="layout-text">Admin 管理系统</span>
           </div>
-          <Menu mode="vertical" theme="dark" active-name="1">
-            <MenuItem name="1">
-              <Icon type="ios-paper"/>导航一
-            </MenuItem>
-            <MenuItem name="2">
-              <Icon type="ios-people"/>导航二
-            </MenuItem>
+          <Menu theme="dark">
+            <Submenu name="1">
+              <template slot="title">
+                <Icon type="ios-paper"/>内容管理
+              </template>
+              <MenuItem name="1-1">文章管理</MenuItem>
+              <MenuItem name="1-2">评论管理</MenuItem>
+              <MenuItem name="1-3">举报管理</MenuItem>
+            </Submenu>
+            <Submenu name="2">
+              <template slot="title">
+                <Icon type="ios-people"/>用户管理
+              </template>
+              <MenuItem name="2-1">新增用户</MenuItem>
+              <MenuItem name="2-2">活跃用户</MenuItem>
+            </Submenu>
             <Submenu name="3">
               <template slot="title">
-                <Icon type="ios-construct"/>导航三
+                <Icon type="ios-stats"/>统计分析
               </template>
               <MenuGroup title="使用">
                 <MenuItem name="3-1">新增和启动</MenuItem>
@@ -27,12 +36,9 @@
                 <MenuItem name="3-5">流失用户</MenuItem>
               </MenuGroup>
             </Submenu>
-            <MenuItem name="4">
-              <Icon type="ios-stats"/>Echarts
-            </MenuItem>
           </Menu>
         </i-col>
-        <i-col :span="spanRight" class="layout-menu-right">
+        <i-col :span="spanRight">
           <div class="layout-header">
             <Button type="text">
               <Icon type="md-menu" size="32"/>
@@ -40,7 +46,7 @@
             <div class="userinfo">
               <Dropdown>
                 <a href="javascript:void(0)">
-                  {{ userName }}
+                  {{userName}}
                   <Icon type="ios-arrow-down"></Icon>
                 </a>
                 <DropdownMenu slot="list">
@@ -50,6 +56,11 @@
               </Dropdown>
             </div>
           </div>
+          <Breadcrumb>
+            <BreadcrumbItem to="/">Home</BreadcrumbItem>
+            <BreadcrumbItem to="/table">Components</BreadcrumbItem>
+          </Breadcrumb>
+          <router-view></router-view>
         </i-col>
       </Row>
     </div>
@@ -58,40 +69,41 @@
 
 <script>
 export default {
-  name: 'Home',
-  data () {
+  name: "Home",
+  data() {
     return {
       spanLeft: 5,
       spanRight: 19,
-      userName: ''
-    }
+      userName: ""
+    };
   },
-  created () {
-    this.userName = JSON.parse(sessionStorage.getItem('user'))
+  created() {
+    this.userName = JSON.parse(sessionStorage.getItem('user'));
   }
-}
+};
 </script>
 
 <style scoped>
- .home, .layout {
-   width: 100%;
-   height: 100%;
- }
- .ivu-row-flex {
-   height: 100%;
- }
- .layout-menu-left {
-   background-color: #515a6e;
- }
- .userinfo {
-   float: right;
-   margin: 10px 20px;
- }
- .layout-menu-right {
-   background-color: #eee;
- }
- .layout-header {
-   background-color: #fff;
-   padding: 10px 0;
- }
+.home,
+.layout {
+  width: 100%;
+  height: 100%;
+}
+.ivu-row-flex {
+  height: 100%;
+}
+.layout-menu-left {
+  background: #515a6e;
+}
+.userinfo {
+  float: right;
+  margin: 5px 15px;
+}
+.ivu-col-span-19 {
+  background-color: #eeeeee;
+}
+.layout-header {
+  background-color: #ffffff;
+  padding: 10px 0;
+}
 </style>
