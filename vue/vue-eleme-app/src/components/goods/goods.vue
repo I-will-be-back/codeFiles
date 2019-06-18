@@ -26,6 +26,7 @@
                 v-for="(food,index) in item.foods"
                 :key="index"
                 class="food-item border-1px"
+                @click="selectFood(index, $event)"
               >
                 <div class="icon">
                   <img width="57" height="57" :src="food.icon">
@@ -66,6 +67,7 @@ export default {
   },
   data () {
     return {
+      classMap: [],
       goods: [],
       scrollY:0,
       listHeight: []
@@ -141,16 +143,16 @@ export default {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
 
     this.$http.get('https://www.easy-mock.com/mock/5ca2c29464930718b239eb94/lm/vue-eleme-goods')
-      .then(res => {
-        // console.log(res)
-        if (res.data.errno === 0) {
-          this.goods = res.data.data
-          this.$nextTick(() => { //页面渲染完成才能执行
-            this._initScroll()
-            this._calculateHeight()
-          })
-        }
-      })
+    .then(res => {
+      // console.log(res)
+      if (res.data.errno === 0) {
+        this.goods = res.data.data
+        this.$nextTick(() => { //页面渲染完成才能执行
+          this._initScroll()
+          this._calculateHeight()
+        })
+      }
+    })
   }
 }
 </script>
