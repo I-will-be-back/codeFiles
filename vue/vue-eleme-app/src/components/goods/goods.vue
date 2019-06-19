@@ -65,6 +65,11 @@
 import BScroll from 'better-scroll'
 import cartcontrol from '@/components/cartcontrol/cartcontrol'
 import shopcart from '@/components/shopcart/Shopcart'
+// import food from '@/components/food/food'
+const response = require('../../common/data/goods.json')
+
+const ERR_OK = 0
+
 export default {
   name: 'Goods',
   props: {
