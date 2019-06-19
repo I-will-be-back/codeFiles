@@ -35,7 +35,7 @@ export default {
   created () {
     this.$http.get('https://www.easy-mock.com/mock/5ca495f2ea0dc52bf3b67fd5/friday/eleme')
       .then(res => {
-        // console.log(res)
+        console.log(res)
         if (res.data.errno === 0) {
           this.seller = Object.assign({}, this.seller, res.data.data)
         }

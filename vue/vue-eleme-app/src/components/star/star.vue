@@ -1,8 +1,6 @@
 <template>
   <span class="star">
-    <i v-for="item in yellowStar" :key="item.name" class="yellow"></i>
-    <i v-if="halfStar" class="half"></i>
-    <i v-for="item in whiteStar" :key="item.name" class="white"></i>
+    <i v-for="(item, index) in 5" :key="index" :class="starType[index]" class="iconStyle" :style="{'height': height + 'px', 'width': width + 'px'}"></i>
   </span>
 </template>
 
@@ -10,41 +8,48 @@
 export default {
   data() {
     return {
-      yellowStar: 0,
-      halfStar: false,
-      whiteStar: 0
+      starScore: 0,
+      height: 0,
+      width: 0
     }
   },
-  props: ['score'],
-  beforeMount () {
-    this.yellowStar = Math.floor(this.score)
-    
-    if (this.score > this.yellowStar) {
-      this.halfStar = true
-      this.whiteStar = 4 - this.yellowStar
-    } else {
-      this.whiteStar = 5 - this.yellowStar
+  props: ['star'],
+  computed: {
+    starType () {
+      let array = []
+      for (let i = 0; i < 5; i++) {
+        if (this.starScore >= 1) {
+          this.starScore -= 1
+          array.push('on') 
+        } else if (this.starScore > 0) {
+          this.starScore -= 1
+          array.push('half') 
+        } else {
+          array.push('off') 
+        }
+      }
+      return array
     }
-    // console.log(this.score)
-    // console.log(this.yellowStar)
-    // console.log(this.halfStar)
-    // console.log(this.whiteStar)
+  },
+  mounted () {
+    this.starScore = this.star.score
+    this.height = this.star.height || 18
+    this.width = this.star.width || 18
   }
 }
 </script>
 
 <style lang="stylus" scoped>
 @import '../../common/stylus/mixin.styl'
-.yellow, .half, .white
-  height 18px
-  width 18px
+.iconStyle
+  background-size contain
   display inline-block
   background-repeat no-repeat
   margin-right 3px
-.yellow
+.on
   bg-image('star24_on')
 .half
   bg-image('star24_half')
-.white
+.off
   bg-image('star24_off')
 </style>

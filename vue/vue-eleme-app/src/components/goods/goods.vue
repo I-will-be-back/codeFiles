@@ -51,6 +51,12 @@
           </li>
         </ul>
       </div>
+      <shopcart 
+        ref="shopcart" 
+        :selectFoods="selectFoods" 
+        :deliveryPrice="seller.deliveryPrice" 
+        :minPrice="seller.minPrice">
+      </shopcart>
     </div>
   </div>
 </template>
@@ -58,6 +64,7 @@
 <script>
 import BScroll from 'better-scroll'
 import cartcontrol from '@/components/cartcontrol/cartcontrol'
+import shopcart from '@/components/shopcart/Shopcart'
 export default {
   name: 'Goods',
   props: {
@@ -74,7 +81,8 @@ export default {
     }
   },
   components: {
-    cartcontrol
+    cartcontrol,
+    shopcart
   },
   computed: {
     currentIndex () {
@@ -87,6 +95,17 @@ export default {
         }
       }
       return 0
+    },
+    selectFoods () {
+      let foods = []
+      this.goods.forEach(good => {
+        good.foods.forEach(food => {
+          if (food.count) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   methods: {
@@ -107,6 +126,7 @@ export default {
       this.$refs.food.show();
     },
     addFood(target) {
+      // console.log(target)
       this._drop(target);
     },
     _drop(target) {
@@ -114,6 +134,9 @@ export default {
       this.$nextTick(() => {
         this.$refs.shopcart.drop(target);
       });
+    },
+    drop () {
+
     },
     _initScroll() {
       this.menuScroll = new BScroll(this.$refs.menuWrapper, {

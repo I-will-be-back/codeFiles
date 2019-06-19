@@ -8,8 +8,8 @@
       </div>
       <div class="line"></div>
       <div class="otherScore">
-        <span class="scoreTitle">服务态度</span><star :score="seller.serviceScore"></star><span class="serviceScore">{{seller.serviceScore}}</span><br />
-        <span class="scoreTitle">商品评分</span><star :score="seller.foodScore"></star><span class="serviceScore">{{seller.foodScore}}</span><br />
+        <span class="scoreTitle">服务态度</span><star :star="{'score': seller.serviceScore}"></star><span class="serviceScore">{{seller.serviceScore}}</span><br />
+        <span class="scoreTitle">商品评分</span><star :star="{'score': seller.foodScore}"></star><span class="serviceScore">{{seller.foodScore}}</span><br />
         <span class="scoreTitle">送达时间</span><span class="deliveryTime">{{seller.deliveryTime}}分钟</span>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <img :src="item.avatar" class="avatar" alt="">
           <div class="userComment">
             <span class="username">{{item.username}}</span><span class="nowTime">{{item.rateTime}}</span><br/>
-            <star :score="item.score" class="starSmall"></star><span class="deliveryTime">{{item.deliveryTime}}</span><br/>
+            <star :star="{'score': item.score, 'height': 12, 'width': 12}" class="starSmall"></star><span class="deliveryTime">{{item.deliveryTime}}</span><br/>
             <span class="bold">{{item.text}}</span><br />
             <!-- <img> -->
             <span class="dianzhan" v-for="(recommend, index) in item.recommend" :key="index">{{recommend}}</span> 
