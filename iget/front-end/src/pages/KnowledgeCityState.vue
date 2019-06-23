@@ -1,11 +1,11 @@
 <template>
-  <div class="mine"></div>
+  <div class="knowledgeCityState"></div>
 </template>
 
 <script>
 export default {
-  name: 'mine'
-}
+  name: 'knowledgeCityState',
+};
 </script>
 
 <style lang="stylus" scoped>

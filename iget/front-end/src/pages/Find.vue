@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  name: 'find'
-}
+  name: 'find',
+};
 </script>
 
 <style lang="stylus" scoped>

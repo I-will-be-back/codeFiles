@@ -1,11 +1,11 @@
 <template>
-  <div class="purchased"></div>
+  <div class="mine"></div>
 </template>
 
 <script>
 export default {
-  name: 'purchased'
-}
+  name: 'mine',
+};
 </script>
 
 <style lang="stylus" scoped>
