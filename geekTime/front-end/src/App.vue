@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" ref="app">
     <router-view/>
     <tabBar />
   </div>
@@ -20,6 +20,6 @@ export default {
 #app
   margin 0
   padding 0
-  height 300px
+  // height 50vh
   overflow hidden
 </style>
