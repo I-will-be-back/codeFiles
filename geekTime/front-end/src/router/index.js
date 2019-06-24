@@ -12,19 +12,14 @@ export default new Router({
       component: () => import('@/pages/Find.vue'),
     },
     {
-      path: '/studyPlan',
-      name: 'studyPlan',
-      component: () => import('@/pages/StudyPlan.vue'),
+      path: '/study',
+      name: 'study',
+      component: () => import('@/pages/Study.vue'),
     },
     {
-      path: '/knowledgeCityState',
-      name: 'knowledgeCityState',
-      component: () => import('@/pages/KnowledgeCityState.vue'),
-    },
-    {
-      path: '/purchased',
-      name: 'purchased',
-      component: () => import('@/pages/Purchased.vue'),
+      path: '/lectureHall',
+      name: 'lectureHall',
+      component: () => import('@/pages/LectureHall.vue'),
     },
     {
       path: '/mine',

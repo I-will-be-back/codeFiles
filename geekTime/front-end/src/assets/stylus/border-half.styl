@@ -1,0 +1,17 @@
+border-1px()
+  position relative
+  &:before
+    display block
+    /* 绝对定位到父元素最低端，可以通过left/right的值控制边框长度或者定义width100%*/
+    position absolute
+    top 0
+    left 0
+    right 0
+    /* 初始化边框 */
+    content ''
+    box-sizing border-box
+    height 1px
+    border-bottom 1px solid rgba(0, 0, 0, 0.2)
+    /* 以上代码，实现了一个边框为1px的元素，下面实现0.5px边框*/
+    transform scaleY(0.5) // 元素Y方向缩小为原来的0.5
+    transform-origin 0 0 // CSS属性让你更改一个元素变形的原点。

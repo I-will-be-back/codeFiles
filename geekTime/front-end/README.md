@@ -14,9 +14,8 @@
 ## 项目页面
 - 一级页面
   - 发现: Find.vue
-  - 学习计划: StudyPlan.vue
-  - 知识城邦: knowledgeCityState.vue
-  - 已购: Purchased.vue
+  - 讲堂: LectureHall.vue
+  - 学习: Study.vue
   - 我的: Mine.vue
 - 二级页面
 
@@ -31,17 +30,18 @@
 - main.js: 配置
 
 ## 项目组件
+- 底部导航: tabBar.vue
 
 ## 项目相关指令
 - 项目初始化: vue init webpack front-end
 - 安装stylus: yarn add stylus stylus-loader -D
 - 本地运行项目: npm run dev
 - 项目打包上线: npm run build
-- 安装element-ui: yarn add element-ui
+- 安装mint-ui: npm i mint-ui -S
 - 安装better-scroll: yarn add better-scroll
 
 ## 快捷指令
-- vue项目快速生成: sca
+- vue项目快速生成: sca(在VSCode编辑器中)
 
 ## 项目配置
 

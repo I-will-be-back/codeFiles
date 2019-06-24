@@ -70,7 +70,7 @@ const evaluteDimension = async (url) => {
     let image = await page.$$eval('img', imgs=>{
         const images = [];
         imgs.forEach(img => {
-            downloadImg(img.src)
+            // downloadImg(img.src)
             images.push(img.src);
          });
          return images
