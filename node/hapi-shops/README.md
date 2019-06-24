@@ -1,0 +1,1 @@
+- ./node_modules/.bin/sequelize init 初始化
