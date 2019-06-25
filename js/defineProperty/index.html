@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>defineProperty</title>
+</head>
+<body>
+  <span id="container">1</span>
+  <button id="button">+</button>
+  <script>
+    let watch = (obj, name, func) => {
+      let value = obj[name];
+      Object.defineProperty(obj, name, {
+        get () {
+          return value;
+        },
+        set (val) {
+          value = val;
+          func(value);
+        }
+      });
+    }
+  </script>
+  <script>
+    let obj = {};
+    let value = false;
+    Object.defineProperty(obj, 'value', {
+      get () {
+        console.log('get value', value);
+        return value;
+      },
+      set (val) {
+        console.log('set value', val);
+        value = val;
+      }
+    });
+    console.log(obj.value);
+    obj.value = true;
+    console.log(obj.value);
+
+    let object1 = {
+      value: 1
+    };
+    watch(object1, 'value', function(newVal) {
+      document.querySelector('#container').innerHTML = newVal;
+    })
+    document.querySelector('#button').addEventListener('click', () => {
+      object1.value += 1;
+    })
+  </script>
+  <script>
+    let object3 = {};
+    Object.defineProperty(object3, 'isLogin', {
+      value: true,
+      // 是否可以遍历
+      enumerable: true,
+      // 是否可以修改
+      writable: true,
+      // 是否可以删除
+      configurable: true,
+    });
+    console.log(object3);
+    console.log('keys', Object.keys(object3));
+    for (let key in object3) {
+      console.log('key',key);
+    }
+    object3.isLogin = false;
+    console.log(object3);
+    delete object3.isLogin;
+    console.log(object3);
+  </script>
+</body>
+</html>
