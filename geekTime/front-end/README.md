@@ -6,7 +6,7 @@
 - 路由管理: vue-rooter
 - 滚动插件: better-scroll
 - 数据调用: vue-axios
-- 数据管理: vuex
+- 状态管理: vuex
 - Js语法: Es6
 - Css预处理: Stylus
 - 包管理工具: yarn
