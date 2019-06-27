@@ -45,42 +45,42 @@
       <!-- <div class="advisory">资讯</div> -->
       <div class="recommended-read">
         <nameAndMore :data="{name: '推荐阅读', more: '全部专栏', url: ''}" />
-        <div>
-          <course v-for="(item, index) in courseDatas" :course="item" :key="index" />
-        </div>
-        <div>换一换</div>
+        <course v-for="(item, index) in courseDatas" :course="item" :key="index" class="course" />
+        <changeOne />
       </div>
       <aline />
       <imageLink index=2 />
       <div class="popular-course">
         <nameAndMore :data="{name: '热门课程', more: '全部课程', url: ''}" />
-        <ul>
-          <li></li>
-        </ul>
-        <div>换一换</div>
+        <course v-for="(item, index) in courseDatas" :course="item" :key="index" class="course" />
+        <changeOne />
       </div>
       <aline />
       <div class="daily-lesson">
         <nameAndMore :data="{name: '每日一课', more: '查看全部', url: ''}" />
-        <ul>
-          <li></li>
-        </ul>
-        <div>换一换</div>
+        <div class="lesson-container">
+          <aLesson v-for="(item, index) in lessonDatas" :data="item" :key="index" />
+        </div>
+        <changeOne />
         <img src="" alt="">
       </div>
       <aline />
       <div class="hot-topics">
         <nameAndMore :data="{name: '热点专题', more: '查看全部', url: ''}" />
-        <ul>
-          <li></li>
-        </ul>
+        <img v-for="(item, index) in 2"
+        :src="swipeImage[index]"
+        :key="index" alt=""
+        style="height: 10vh;margin-left: 2.5vh">
       </div>
       <aline />
       <div class="video-mix">
         <nameAndMore :data="{name: '视频合辑', more: '查看全部', url: ''}" />
-        <ul>
-          <li></li>
-        </ul>
+        <div class="video-container">
+          <videoComponent v-for="(item, index) in videoDatas"
+          :key="index"
+          :data="item"
+          class="video-child" />
+        </div>
       </div>
     </div>
   </div>
@@ -94,6 +94,9 @@ import aline from '../components/common/ALine';
 import imageLink from '../components/ImageLink';
 import shop from '../components/Shop';
 import course from '../components/Course';
+import changeOne from '../components/ChangeOne';
+import videoComponent from '../components/Video';
+import aLesson from '../components/ALesson';
 
 export default {
   name: 'find',
@@ -104,6 +107,9 @@ export default {
     imageLink,
     shop,
     course,
+    changeOne,
+    videoComponent,
+    aLesson,
   },
   data() {
     return {
@@ -112,6 +118,8 @@ export default {
       shopDatas: [],
       articleDatas: [],
       courseDatas: [],
+      videoDatas: [],
+      lessonDatas: [],
     };
   },
   methods: {
@@ -174,6 +182,7 @@ export default {
         title: '第26讲|云中的网络安全:虽然不是土豪',
         text: '刘超|网易研究院云计算技术部...',
         src: this.articleDatas[0][1],
+        people: require('../assets/images/person/person1.jpg'),
       },
       {
         size: true,
@@ -181,6 +190,7 @@ export default {
         title: '32|微服务混合云部署实践',
         text: '胡忠想|微博技术专家',
         src: this.articleDatas[0][1],
+        people: require('../assets/images/person/person2.jpg'),
       },
       {
         size: true,
@@ -188,7 +198,60 @@ export default {
         title: '16|怎样才能写出好项目文档?',
         text: '宝玉|Groipon资深工程师,微...',
         src: this.articleDatas[0][1],
+        people: require('../assets/images/person/person3.jpg'),
       }
+    ];
+    this.videoDatas = [
+      {
+        size: false,
+        title: '十年',
+        text: '公6个视频',
+        src: require('../assets/images/lectureHall/icon1.png'),
+      },
+      {
+        size: false,
+        title: '十年',
+        text: '公6个视频',
+        src: require('../assets/images/lectureHall/icon1.png'),
+      },
+      {
+        size: false,
+        title: '十年',
+        text: '公6个视频',
+        src: require('../assets/images/lectureHall/icon1.png'),
+      },
+      {
+        size: false,
+        title: '十年',
+        text: '公6个视频',
+        src: require('../assets/images/lectureHall/icon1.png'),
+      },
+    ];
+    this.lessonDatas = [
+      {
+        size: false,
+        title: '创业型公司2周年自研通用扩展自动...',
+        text: '沈剑 58速递CTO',
+        src: require('../assets/images/swipe/swipe5.jpg'),
+      },
+      {
+        size: false,
+        title: '创业型公司2周年自研通用扩展自动...',
+        text: '沈剑 58速递CTO',
+        src: require('../assets/images/swipe/swipe5.jpg'),
+      },
+      {
+        size: false,
+        title: '创业型公司2周年自研通用扩展自动...',
+        text: '沈剑 58速递CTO',
+        src: require('../assets/images/swipe/swipe5.jpg'),
+      },
+      {
+        size: false,
+        title: '创业型公司2周年自研通用扩展自动...',
+        text: '沈剑 58速递CTO',
+        src: require('../assets/images/swipe/swipe5.jpg'),
+      },
     ];
     /* eslint-disable */
     // 页面渲染完成才能执行
@@ -260,4 +323,9 @@ export default {
   .shop-container
     display flex
     justify-content space-around
+  .video-container
+    padding-bottom 30vh
+  .lesson-container
+    display flex
+    flex-wrap wrap
 </style>

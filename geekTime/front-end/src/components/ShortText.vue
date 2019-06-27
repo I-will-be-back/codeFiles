@@ -1,7 +1,7 @@
 <template>
   <div class="shortText">
-    <p class="bold" :class="size ? 'big' : 'small'" v-text="title"></p>
-    <p class="gray" v-text="text"></p>
+    <div class="bold" :class="size ? 'big' : 'small'" v-text="title"></div>
+    <div class="gray" v-text="text"></div>
   </div>
 </template>
 
@@ -16,12 +16,14 @@ export default {
 .shortText
   .bold
     font-weight 600
+    margin-top 1.5vh
   .big
-    font-size 1.2rem
+    font-size 1.1rem
   .small
     font-size 0.95rem
   .gray
     color gray
     font-size 0.8rem
+    margin-top 1.5vh
 </style>
 

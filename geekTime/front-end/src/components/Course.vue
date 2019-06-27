@@ -1,7 +1,10 @@
 <template>
   <div class="course">
-    <articleTitle :src="course.src" :content="course.content" />
-    <shortText :title="course.title" :text="course.text" :size="course.size" />
+    <div class="left">
+      <articleTitle :src="course.src" :content="course.content" />
+      <shortText :title="course.title" :text="course.text" :size="course.size" />
+    </div>
+    <img :src="course.people" alt="" class="right">
   </div>
 </template>
 
@@ -20,5 +23,14 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+.course
+  background-color #fff
+  display flex
+  height 20vh
+  .left
+    width 60%
+  .right
+    height 85%
+    width 25%
+    padding-right 1vh
 </style>
