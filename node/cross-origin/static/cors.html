@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    document.cookie = "name=helloCros";
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:9090/api/post',
+      dataType: 'json',
+      contentType: 'application/json',
+      headers: {
+        'X-custom': 'abcdefg'
+      },
+      xhrFields: {
+        withCredentials: true
+      },
+      success (res) {
+        console.log('得到数据', res);
+      },
+      error (e) {
+        console.log(e);
+      }
+    });
+  </script>
+</body>
+</html>

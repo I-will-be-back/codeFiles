@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { memberAPI } from '../../api/member';
 import { MemberEntity } from '../../model';
-import { members } from '../../api/member/mockData';
+// import { members } from '../../api/member/mockData';
+import { MemberHeader } from './memberHeader';
+import { MemberRow } from './memberRow';
 
 interface Props {
 
@@ -28,10 +30,16 @@ export class MembersPage extends React.Component<Props, State> {
     return (
       <div>
         <table className="table">
-          <thead></thead>
+          <tbody>
+            <MemberHeader />
+          </tbody>
           <tbody>
             {
-              this.state.members.map(MemberRow)
+              this.state.members.map(
+                (member) => (
+                  <MemberRow key={member.id} member={member} />
+                )
+              )
             }
           </tbody>
         </table>
@@ -40,14 +48,14 @@ export class MembersPage extends React.Component<Props, State> {
   }
 }
 
-const MemberRow = (memeber: MemberEntity) => {
-  return (
-    <tr key={memeber.id}>
-      <td>
-        <img src={memeber.avatar_url} alt="" className="avatar" />
-      </td>
-      <td><span>{memeber.id}</span></td>
-      <td><span>{memeber.login}</span></td>
-    </tr>
-  )
-}
+// const MemberRow = (memeber: MemberEntity) => {
+//   return (
+//     <tr key={memeber.id}>
+//       <td>
+//         <img src={memeber.avatar_url} alt="" className="avatar" />
+//       </td>
+//       <td><span>{memeber.id}</span></td>
+//       <td><span>{memeber.login}</span></td>
+//     </tr>
+//   )
+// }
