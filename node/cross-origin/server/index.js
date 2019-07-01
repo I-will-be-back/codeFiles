@@ -4,6 +4,9 @@ const koaStatic = require('koa-static');
 const path = require('path');
 const router = require('koa-router')();
 
+app.use(koaStatic(
+  path.join(__dirname, './public/')
+));
 // res.set
 app.use(async (ctx, next) => {
   // 允许哪个域名请求
@@ -38,5 +41,5 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 app.listen(9090, () => {
-  console.log('server is running 9090');
+  console.log('server is running 9090!');
 });
