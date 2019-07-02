@@ -22,7 +22,7 @@ export default {
   watch: {
     selected(newVal) {
       // 一旦标签栏变化，把selected的值存到sessionStorage，保存当前值
-      // sessionStorage.setItem('selected', JSON.stringify(newVal));
+      sessionStorage.setItem('selected', JSON.stringify(newVal));
       if (newVal === '发现') {
         this.$router.replace('/');
       } else if (newVal === '讲堂') {
@@ -36,8 +36,8 @@ export default {
   },
   // 获取图片数据
   created() {
+    /* eslint-disable */
     this.images = [
-      /* eslint-disable */
       {
         id: '发现',
         noActive:  require('../../assets/images/tabBar/find.png'),
@@ -63,6 +63,11 @@ export default {
         clicked: false
       },
     ];
+    /* eslint-disable */
+  },
+  mounted() {
+    // console.log(JSON.parse(sessionStorage.getItem('selected')));
+    this.select(this.images.filter(item => item.id == JSON.parse(sessionStorage.getItem('selected')))[0]);
   },
   methods: {
     // 点击切换图片

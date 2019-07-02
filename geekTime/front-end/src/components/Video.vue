@@ -9,7 +9,7 @@
 import shortText from './ShortText';
 
 export default {
-  name: 'video',
+  name: 'videoComponent',
   components: {
     shortText,
   },

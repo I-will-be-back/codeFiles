@@ -1,13 +1,7 @@
 <template>
   <div class="find" ref="scroll">
     <div class="content">
-      <div class="title">
-        <span>发现</span>
-        <div>
-          <img src="../assets/images/find/shake.png" alt="">
-          <img src="../assets/images/find/bar-chart.png" alt="">
-        </div>
-      </div>
+     <titleComponent :titleData="titleData" />
       <mt-search class="search"
         :show="false"
         cancel-text="取消"
@@ -88,6 +82,7 @@
 
 <script>
 import BScroll from 'better-scroll';
+import titleComponent from '../components/Title';
 import nameAndMore from '../components/NameAndMore';
 import articleTitle from '../components/ArticleTitle';
 import aline from '../components/common/ALine';
@@ -101,6 +96,7 @@ import aLesson from '../components/ALesson';
 export default {
   name: 'find',
   components: {
+    titleComponent,
     nameAndMore,
     articleTitle,
     aline,
@@ -114,6 +110,7 @@ export default {
   data() {
     return {
       column: '',
+      titleData: {},
       swipeImage: [],
       shopDatas: [],
       articleDatas: [],
@@ -130,6 +127,15 @@ export default {
     },
   },
   created() {
+    /* eslint-disable */
+    this.titleData = {
+      text: '发现',
+      img1: require('../assets/images/find/shake.png'),
+      img2: require('../assets/images/find/bar-chart.png'),
+      visibility1: true,
+      visibility2: true,
+    };
+    /* eslint-disable */
     this.column = '卖桃者说';
     /* eslint-disable */
     this.swipeImage = [
@@ -272,12 +278,6 @@ export default {
   width 100%
   height 100vh
   overflow hidden
-  .title
-    display flex
-    justify-content space-between
-    span
-      font-weight bold
-      font-size 2rem
   // 搜索框
   .search
     margin-top 1vh
