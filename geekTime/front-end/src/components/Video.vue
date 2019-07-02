@@ -1,6 +1,6 @@
 <template>
   <div class="video">
-    <img :src="data.src" alt="">
+    <img :src="data.src" alt="" class="image">
     <shortText :size="data.size" :title="data.title" :text="data.text" />
   </div>
 </template>
@@ -26,5 +26,9 @@ export default {
   display flex
   justify-content space-around
   border 1px solid rgba(0, 0, 0, .1)
+  text-align center
   border-radius 5px
+  .image
+    height 4vh
+    margin-top 2vh
 </style>

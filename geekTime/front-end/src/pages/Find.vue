@@ -182,7 +182,7 @@ export default {
         title: '第26讲|云中的网络安全:虽然不是土豪',
         text: '刘超|网易研究院云计算技术部...',
         src: this.articleDatas[0][1],
-        people: require('../assets/images/person/person1.jpg'),
+        people: require('../assets/images/person-opacity/person1.png'),
       },
       {
         size: true,
@@ -190,7 +190,7 @@ export default {
         title: '32|微服务混合云部署实践',
         text: '胡忠想|微博技术专家',
         src: this.articleDatas[0][1],
-        people: require('../assets/images/person/person2.jpg'),
+        people: require('../assets/images/person-opacity/person2.png'),
       },
       {
         size: true,
@@ -198,7 +198,7 @@ export default {
         title: '16|怎样才能写出好项目文档?',
         text: '宝玉|Groipon资深工程师,微...',
         src: this.articleDatas[0][1],
-        people: require('../assets/images/person/person3.jpg'),
+        people: require('../assets/images/person-opacity/person3.png'),
       }
     ];
     this.videoDatas = [
