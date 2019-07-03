@@ -18,3 +18,7 @@ const OPTION = {
 xxx 可以固死的
 jsonp jquery
 每次请求的 callback xxx 都是不一样的 加上随机值
+
+## Lazyload
+监听原生的滚动
+css3 transform
