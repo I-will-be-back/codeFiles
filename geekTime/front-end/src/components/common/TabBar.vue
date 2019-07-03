@@ -67,7 +67,9 @@ export default {
   },
   mounted() {
     // console.log(JSON.parse(sessionStorage.getItem('selected')));
-    this.select(this.images.filter(item => item.id == JSON.parse(sessionStorage.getItem('selected')))[0]);
+    if (sessionStorage.getItem('selected')) {
+      this.select(this.images.filter(item => item.id == JSON.parse(sessionStorage.getItem('selected')))[0]);
+    }
   },
   methods: {
     // 点击切换图片
