@@ -1,9 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
-import './App.styl';
 import Recommend from './recommend/Recommend'
 import Ranking from './ranking/Ranking'
-import Search from './search/Search'
+import Search from './search/Search';
+import '../assets/stylus/reset.styl';
+import '../assets/stylus/font.styl';
+import './App.styl';
+
 function App() {
   return (
     <Router>
