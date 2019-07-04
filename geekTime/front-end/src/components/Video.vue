@@ -1,7 +1,7 @@
 <template>
   <div class="video">
     <img :src="data.src" alt="" class="image">
-    <shortText :size="data.size" :title="data.title" :text="data.text" />
+    <shortText :size="data.size" :title="data.title" :text="data.text" class="text" />
   </div>
 </template>
 
@@ -20,15 +20,15 @@ export default {
 <style lang="stylus" scoped>
 .video
   width 45%
-  float left
-  margin-left 2vh
-  margin-bottom 2vh
+  height 12vh
   display flex
   justify-content space-around
+  margin-bottom 2vh
   border 1px solid rgba(0, 0, 0, .1)
-  text-align center
   border-radius 5px
   .image
     height 4vh
-    margin-top 2vh
+    margin-top 4vh
+  .text
+    margin-top 1.5vh
 </style>

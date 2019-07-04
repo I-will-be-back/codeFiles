@@ -1,7 +1,7 @@
 <template>
   <div class="aLesson">
     <img :src="data.src" alt="" class="image">
-    <shortText :size="data.size" :title="data.title" :text="data.text" />
+    <shortText :size="data.size" :title="data.title" :text="data.text" class="text" />
   </div>
 </template>
 
@@ -19,10 +19,13 @@ export default {
 
 <style lang="stylus" scoped>
 .aLesson
-  width 40%
-  margin 0 2.2vh
-  // float left
+  width 45%
+  margin-bottom 2vh
+  border 1px solid rgba(0, 0, 0, .1)
+  border-radius 5px
   .image
-    height 10vh
+    width 100%
+  .text
+    margin 0 1vh 1.5vh 1vh
 </style>
 

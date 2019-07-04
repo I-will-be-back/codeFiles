@@ -1,8 +1,10 @@
 <template>
   <div class="shop">
-    <img :src="data.src" alt="" class="image">
+    <div class="image">
+      <img :src="data.src" alt="">
+    </div>
     <shortText :title="data.title" :text="data.text" :size="data.size" />
-    <p class="money">￥{{data.money}}</p>
+    <div class="money">￥{{data.money}}</div>
   </div>
 </template>
 
@@ -19,10 +21,19 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.shop
+  width 29%
 .image
-  background-color gray
-  height 15vh
+  display flex
+  justify-content center
+  align-items center
+  background-color rgba(0, 0, 0, .1)
+  height 16vh
+  margin-bottom 2vh
+  img
+    height 80%
 .money
   color #FA8919
+  font-size 0.85rem
 </style>
 

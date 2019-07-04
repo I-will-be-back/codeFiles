@@ -2,7 +2,7 @@
   <section>
     <div class="textscroll">
       <transition-group tag="ul" :name="scrolltype">
-        <li v-for="(item, index) in dataList" :key="index" v-show="index === count">
+        <li v-for="(item, index) in dataList" :key="item.name" v-show="index === count">
           <p>{{item.text}}</p>
         </li>
       </transition-group>
@@ -11,7 +11,6 @@
 </template>
 
 <script>
-// import { setInterval } from "timers";
 export default {
   data() {
     return {

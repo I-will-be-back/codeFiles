@@ -16,14 +16,15 @@ export default {
 .shortText
   .bold
     font-weight 600
-    margin-top 1.5vh
+    margin-top 0.5vh
   .big
-    font-size 1.1rem
+    font-size 1rem
   .small
-    font-size 0.95rem
+    font-size 0.8rem
+    margin-top 0.5vh
   .gray
     color gray
     font-size 0.8rem
-    margin-top 1.5vh
+    margin-top 0.5vh
 </style>
 

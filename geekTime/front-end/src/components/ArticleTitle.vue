@@ -19,7 +19,6 @@ export default {
 .content
   margin-left 5px
   display inline-block
-  // color gray
   font-size 0.85rem
 </style>
 

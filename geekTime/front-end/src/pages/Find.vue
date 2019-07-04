@@ -1,7 +1,7 @@
 <template>
   <div class="find" ref="scroll">
     <div class="content">
-     <titleComponent :titleData="titleData" />
+     <!-- <titleComponent :titleData="titleData" /> -->
       <mt-search class="search"
         :show="false"
         cancel-text="取消"
@@ -56,15 +56,16 @@
           <aLesson v-for="(item, index) in lessonDatas" :data="item" :key="index" />
         </div>
         <changeOne />
-        <img src="" alt="">
+        <!-- <img src="" alt=""> -->
       </div>
       <aline />
       <div class="hot-topics">
         <nameAndMore :data="{name: '热点专题', more: '查看全部', url: ''}" />
-        <img v-for="(item, index) in 2"
-        :src="swipeImage[index]"
-        :key="index" alt=""
-        style="height: 10vh;margin-left: 2.5vh">
+        <div class="hot-image">
+          <img v-for="(item, index) in 2"
+          :src="swipeImage[index]"
+          :key="index" alt="">
+        </div>
       </div>
       <aline />
       <div class="video-mix">
@@ -72,8 +73,7 @@
         <div class="video-container">
           <videoComponent v-for="(item, index) in videoDatas"
           :key="index"
-          :data="item"
-          class="video-child" />
+          :data="item" />
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
 
 <script>
 import BScroll from 'better-scroll';
-import titleComponent from '../components/Title';
+// import titleComponent from '../components/Title';
 import nameAndMore from '../components/NameAndMore';
 import articleTitle from '../components/ArticleTitle';
 import aline from '../components/common/ALine';
@@ -96,7 +96,7 @@ import aLesson from '../components/ALesson';
 export default {
   name: 'find',
   components: {
-    titleComponent,
+    // titleComponent,
     nameAndMore,
     articleTitle,
     aline,
@@ -110,7 +110,9 @@ export default {
   data() {
     return {
       column: '',
-      titleData: {},
+      scrollY: 0,
+      flag: false,
+      // titleData: {},
       swipeImage: [],
       shopDatas: [],
       articleDatas: [],
@@ -123,18 +125,23 @@ export default {
     _initScroll() {
       this.scroll = new BScroll(this.$refs.scroll, {
         click: true,
+        probeType: 3,
+      });
+      this.scroll.on('scroll', (pos) => {
+        this.scrollY = Math.abs(Math.round(pos.y));
+        // console.log(this.scrollY);
+        if (this.scrollY <= 0) {
+          this.flag = true;
+        } else {
+          this.flag = false;
+        }
+        this.$emit('scrollEvent', this.flag);
       });
     },
   },
   created() {
-    /* eslint-disable */
-    this.titleData = {
-      text: '发现',
-      img1: require('../assets/images/find/shake.png'),
-      img2: require('../assets/images/find/bar-chart.png'),
-      visibility1: true,
-      visibility2: true,
-    };
+    this.$emit('fatherData', { text: '发现' });
+    this.$emit('scrollEvent', true);
     /* eslint-disable */
     this.column = '卖桃者说';
     /* eslint-disable */
@@ -150,7 +157,7 @@ export default {
         src: require('../assets/images/book/book1.png'),
         size: false,
         title: '[热]测试工程师',
-        text: '全栈技术进阶与实战',
+        text: '全栈技术进阶',
         money: 69,
       },
       {
@@ -270,14 +277,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.scroll
-  height 200vh
 .find
   display flex
   flex-direction column
-  width 100%
   height 100vh
   overflow hidden
+.content
+  padding-bottom 10vh
   // 搜索框
   .search
     margin-top 1vh
@@ -313,6 +319,7 @@ export default {
       margin-top 1vh
       width 6vh
       height 6vh
+      border 4px solid rgba(0, 0, 0, .1)
       border-radius 50%
   .news-article
     margin-left 10px
@@ -320,12 +327,23 @@ export default {
     flex-direction column
     justify-content space-between
     height 16vh
+  .hot-image
+    display flex
+    justify-content space-around
+    height 12vh
+    img
+      width 45%
+      border-radius 5px
   .shop-container
     display flex
     justify-content space-around
-  .video-container
-    padding-bottom 30vh
   .lesson-container
     display flex
+    justify-content space-around
+    flex-wrap wrap
+    margin-bottom 2vh
+  .video-container
+    display flex
+    justify-content space-around
     flex-wrap wrap
 </style>

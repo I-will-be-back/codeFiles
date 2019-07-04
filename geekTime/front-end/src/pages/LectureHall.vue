@@ -1,7 +1,6 @@
 <template>
   <div class="lectureHall" ref="lectureHall">
     <div class="content">
-      <titleComponent :titleData="titleData" />
       <div class="nav-container">
         <div v-for="(item, index) in navData" :key="index" class="nav">
           <img :src="item.img" alt="">
@@ -27,7 +26,6 @@
 
 <script>
 import BScroll from 'better-scroll';
-import titleComponent from '../components/Title';
 import nameAndMore from '../components/NameAndMore';
 import subject from '../components/Subject';
 import aLesson from '../components/ALesson';
@@ -36,11 +34,11 @@ import aline from '../components/common/ALine';
 export default {
   name: 'lectureHall',
   components: {
-    titleComponent, nameAndMore, subject, aLesson, aline,
+    nameAndMore, subject, aLesson, aline,
   },
   data() {
     return {
-      titleData: {},
+      flag: false,
       navData: [],
       subjectData: [],
       lessonDatas: [],
@@ -50,18 +48,23 @@ export default {
     _initScroll() {
       this.scroll = new BScroll(this.$refs.lectureHall, {
         click: true,
+        probeType: 3,
+      });
+      this.scroll.on('scroll', (pos) => {
+        this.scrollY = Math.abs(Math.round(pos.y));
+        if (this.scrollY <= 0) {
+          this.flag = true;
+        } else {
+          this.flag = false;
+        }
+        this.$emit('scrollEvent', this.flag);
       });
     },
   },
   created() {
+    this.$emit('fatherData', { text: '讲堂' });
+    this.$emit('scrollEvent', true);
     /* eslint-disable */
-    this.titleData = {
-      text: '讲堂',
-      img1: require('../assets/images/find/shake.png'),
-      img2: require('../assets/images/find/bar-chart.png'),
-      visibility1: true,
-      visibility2: true,
-    };
     this.navData = [
       {
         img: require('../assets/images/lectureHall/icon1.png'),
@@ -154,18 +157,22 @@ export default {
 
 <style lang="stylus" scoped>
 .lectureHall
+  margin-top 3vh
   height 100vh
-  .content
-    height 320vh
-    .nav-container
-      display flex
-      justify-content space-around
-      .nav
-        width 20%
-        text-align center
-        img
-          width 40%
-    .lesson-container
-      display flex
-      flex-wrap wrap      
+  overflow hidden
+.content
+  padding-bottom 10vh
+  .nav-container
+    display flex
+    justify-content space-around
+    .nav
+      width 20%
+      text-align center
+      img
+        width 40%
+  .lesson-container
+    display flex
+    justify-content space-around
+    flex-wrap wrap
+    margin-bottom 3vh     
 </style>

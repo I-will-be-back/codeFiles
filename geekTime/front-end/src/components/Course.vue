@@ -1,7 +1,7 @@
 <template>
   <div class="course">
     <div class="left">
-      <articleTitle :src="course.src" :content="course.content" />
+      <articleTitle :src="course.src" :content="course.content" class="title" />
       <shortText :title="course.title" :text="course.text" :size="course.size" />
     </div>
     <img :src="course.people" alt="" class="right">
@@ -26,13 +26,15 @@ export default {
 .course
   background-color rgba(50, 0, 0, .1)
   display flex
-  height 20vh
+  height 18vh
   margin-bottom 3vh
   .left
-    width 60%
+    margin-left 2vw
+    width 55%
+    .title
+      margin 2vh 0 .5vh 0
   .right
-    margin-left 4vh
-    height 85%
+    margin-left 6vh
+    height 97%
     width 25%
-    padding-right 1vh
 </style>

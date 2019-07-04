@@ -1,17 +1,45 @@
 <template>
   <div id="app" ref="app">
-    <router-view/>
+    <titleComponent :titleData="titleData" />
+    <router-view @scrollEvent="sroEvent" @fatherData="receiveData" />
     <tabBar />
   </div>
 </template>
 
 <script>
+import titleComponent from '@/components/Title';
 import tabBar from '@/components/common/TabBar';
 
 export default {
   name: 'App',
   components: {
-    tabBar,
+    tabBar, titleComponent,
+  },
+  data() {
+    return {
+      titleData: {},
+    };
+  },
+  methods: {
+    sroEvent(data) {
+      // console.log(data);
+      this.titleData.flag = data;
+    },
+    receiveData(data) {
+      this.titleData.text = data.text;
+    },
+  },
+  created() {
+    /* eslint-disable */
+    this.titleData = {
+      flag: false,
+      text: '',
+      img1: require('./assets/images/find/shake.png'),
+      img2: require('./assets/images/find/bar-chart.png'),
+      visibility1: true,
+      visibility2: true,
+    };
+    /* eslint-disable */
   },
 };
 </script>
