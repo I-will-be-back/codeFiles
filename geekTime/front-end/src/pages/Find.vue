@@ -142,6 +142,18 @@ export default {
   created() {
     this.$emit('fatherData', { text: '发现' });
     this.$emit('scrollEvent', true);
+
+    this.$http.get('http://localhost:3000/top/1').then((res) => {
+      console.log('res', res.data.data);
+      // if (res.data.errno === 0) {
+      //   this.goods = res.data.data
+      //   this.$nextTick(() => { //页面渲染完成才能执行
+      //     this._initScroll()
+      //     this._calculateHeight()
+      //   })
+      // }
+    });
+
     /* eslint-disable */
     this.column = '卖桃者说';
     /* eslint-disable */
@@ -283,7 +295,7 @@ export default {
   height 100vh
   overflow hidden
 .content
-  padding-bottom 10vh
+  padding-bottom 18vh
   // 搜索框
   .search
     margin-top 1vh

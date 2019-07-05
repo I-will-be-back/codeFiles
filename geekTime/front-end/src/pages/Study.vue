@@ -28,7 +28,7 @@ export default {
   methods: {
     subscripe() {
       // sessionStorage.setItem('selected', JSON.stringify('lectureHall'));
-      this.$router.replace('/lectureHall');
+      // this.$router.replace('/lectureHall');
     },
   },
   created() {
@@ -60,7 +60,7 @@ export default {
 .time-container
   padding-left 3vw
   background-color rgba(100, 0, 0, .1)
-  width 31vw
+  width 33vw
   font-size 1rem
   height 4vh
   line-height 4vh

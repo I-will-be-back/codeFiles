@@ -161,7 +161,7 @@ export default {
   height 100vh
   overflow hidden
 .content
-  padding-bottom 10vh
+  padding-bottom 18vh
   .nav-container
     display flex
     justify-content space-around
