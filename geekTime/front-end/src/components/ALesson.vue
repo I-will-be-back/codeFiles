@@ -1,6 +1,6 @@
 <template>
   <div class="aLesson">
-    <img :src="data.src" alt="" class="image">
+    <img :src="data.image" alt="" class="image">
     <shortText :size="data.size" :title="data.title" :text="data.text" class="text" />
   </div>
 </template>

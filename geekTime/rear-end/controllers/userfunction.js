@@ -3,7 +3,7 @@ const Model = require('../models/userfunction');
 class Controller {
 	static async create(ctx) {
 		const req = ctx.request.body;
-		if (req.icon && req.text && req.more) {
+		if (req.icon && req.text) {
 			try {
 				await Model.createDetail(req);
 				ctx.response.status = 200;

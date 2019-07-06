@@ -1,10 +1,10 @@
 <template>
   <div class="shop">
     <div class="image">
-      <img :src="data.src" alt="">
+      <img :src="data.image" alt="">
     </div>
-    <shortText :title="data.title" :text="data.text" :size="data.size" />
-    <div class="money">￥{{data.money}}</div>
+    <shortText :title="data.title" :text="data.dec" :size="data.size" />
+    <div class="money">￥{{data.price}}</div>
   </div>
 </template>
 

@@ -18,16 +18,22 @@ class Controller {
 		}
 	}
 
-	static async search(ctx) {
-    try {
-      let recording = await Model.getDetail();
-      ctx.response.status = 200;
-      ctx.body = { code: 200, msg: '查询成功', recording }
-    } catch (err) {
-        ctx.response.status = 412;
-        ctx.body = { code: 412, msg: '查询失败', err }
-    }
-  }
+  static async search(ctx) {
+		const id = ctx.params.id;
+		if (id) {
+			try {
+				const recording = await Model.getDetail(id);
+				ctx.response.status = 200;
+				ctx.body = { code: 200, msg: '查询成功', recording }
+			} catch (err) {
+				ctx.response.status = 412;
+				ctx.body = { code: 412, msg: '查询失败', err }
+			}
+		} else {
+			ctx.response.status = 416;
+			ctx.body = { code: 416, msg: '未传入id' }
+		}
+	}
 }
 
 module.exports = Controller;

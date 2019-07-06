@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
 		// 额外信息
 		more: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			allowNull: true,
 		},
 	}, {
 		freezeTableName: true

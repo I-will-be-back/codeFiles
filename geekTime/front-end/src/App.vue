@@ -26,24 +26,20 @@ export default {
       this.titleData.flag = data;
     },
     receiveData(data) {
-      this.titleData.text = data.text;
+      this.titleData.text = data.title;
+      this.titleData.img1 = data.image1;
+      this.titleData.img2 = data.image2;
     },
   },
   created() {
-    /* eslint-disable */
-    this.$http.get('http://localhost:3000/top/3').then((res) => {
-      if (res.status === 200) {
-        this.titleData = {
-          flag: false,
-          text: '',
-          img1: res.data.data.image1,
-          img2: res.data.data.image2,
-          visibility1: true,
-          visibility2: true,
-        };
-      }
-    });
-    /* eslint-disable */
+    this.titleData = {
+      flag: false,
+      text: '',
+      img1: '',
+      img2: '',
+      visibility1: true,
+      visibility2: true,
+    };
   },
 };
 </script>

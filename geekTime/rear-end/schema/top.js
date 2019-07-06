@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
 		// 标题
 		title: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			allowNull: true,
 		},
 		// 图片1
 		image1: {

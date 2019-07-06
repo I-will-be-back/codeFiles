@@ -16,9 +16,11 @@ class Model {
 		})
 	}
 
-  static async getDetail() {
-    return await Schema.findAll()
-  }
+  static async getDetail(id) {
+		return await Schema.findOne({
+			where: { id },
+		})
+	}
 }
 
 module.exports = Model;

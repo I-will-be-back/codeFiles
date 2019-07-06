@@ -2,16 +2,16 @@
   <div class="mine">
     <div class="top">
       <div class="image">
-        <img src="../assets/images/mine/mine.png" alt="">
+        <img :src="avatar" alt="">
       </div>
       <div>
-        <div class="user" v-text="user"></div>
+        <div class="user" v-text="username"></div>
         <div class="tel" v-text="tel"></div>
       </div>
     </div>
-    <mt-cell v-for="(item,index) in mineDatas" :key="index" :title="item.title"
-    icon="back" :value="item.value" is-link>
-      <img slot="icon" :src="item.src" width="24" height="24">
+    <mt-cell v-for="(item,index) in mineDatas" :key="index" :title="item.text"
+    icon="back" :value="item.more" is-link>
+      <img slot="icon" :src="item.icon" width="24" height="24">
     </mt-cell>
   </div>
 </template>
@@ -21,69 +21,23 @@ export default {
   name: 'mine',
   data() {
     return {
-      user: '',
+      avatar: '',
+      username: '',
       tel: '',
       mineDatas: [],
     };
   },
   created() {
-    this.$emit('fatherData', {});
-    this.user = 'I_will_be_back';
-    this.tel = '181****7701';
-    this.mineDatas = [
-      /* eslint-disable */
-      {
-        src: require('../assets/images/mine/account.png'),
-        title: '账户',
-        value: 0.0,
-      },
-      {
-        src: require('../assets/images/mine/purchased.png'),
-        title: '已购',
-        // value: '',
-      },
-      {
-        src: require('../assets/images/mine/fightGroup.png'),
-        title: '我的拼团',
-        // value: '',
-      },
-      {
-        src: require('../assets/images/mine/community.png'),
-        title: '我的社群',
-        // value: '',
-      },
-      {
-        src: require('../assets/images/mine/calendar.png'),
-        title: '我的每日一课',
-        // value: '',
-      },
-      {
-        src: require('../assets/images/mine/certificate.png'),
-        title: '礼券',
-        value: 2,
-      },
-      {
-        src: require('../assets/images/mine/share.png'),
-        title: '分享有赏',
-        // value: '',
-      },
-      {
-        src: require('../assets/images/mine/invite.png'),
-        title: '邀请好友',
-        value: '得30元',
-      },
-      {
-        src: require('../assets/images/mine/help.png'),
-        title: '帮助与反馈',
-        // value: '',
-      },
-      {
-        src: require('../assets/images/mine/setting.png'),
-        title: '设置',
-        // value: '',
-      },
-      /* eslint-disable */
-    ];
+    this.$http.get('http://localhost:3000/mine/1').then((res) => {
+      if (res.status === 200) {
+        const mineData = res.data;
+        this.$emit('fatherData', mineData.topData);
+        this.avatar = mineData.user.avatar;
+        this.username = mineData.user.name;
+        this.tel = mineData.user.tel;
+        this.mineDatas = mineData.userfunction;
+      }
+    });
   },
 };
 </script>

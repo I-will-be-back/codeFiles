@@ -3,6 +3,6 @@ const Controller = require('../controllers/studytime')
 
 router.post('/', Controller.create);
 
-router.get('/', Controller.search);
+router.get('/:id', Controller.search);
 
 module.exports = router;

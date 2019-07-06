@@ -1,10 +1,10 @@
 <template>
   <div class="course">
     <div class="left">
-      <articleTitle :src="course.src" :content="course.content" class="title" />
-      <shortText :title="course.title" :text="course.text" :size="course.size" />
+      <articleTitle :src="course.icon" :content="course.text" class="title" />
+      <shortText :title="course.title" :text="course.content" :size="course.size" />
     </div>
-    <img :src="course.people" alt="" class="right">
+    <img :src="course.image" alt="" class="right">
   </div>
 </template>
 

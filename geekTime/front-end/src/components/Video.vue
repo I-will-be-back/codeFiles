@@ -1,6 +1,6 @@
 <template>
   <div class="video">
-    <img :src="data.src" alt="" class="image">
+    <img :src="data.icon" alt="" class="image">
     <shortText :size="data.size" :title="data.title" :text="data.text" class="text" />
   </div>
 </template>

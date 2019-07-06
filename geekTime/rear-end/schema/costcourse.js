@@ -37,12 +37,12 @@ module.exports = function (sequelize, DataTypes) {
     },
     // 现在的价格
 		newprice: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.FLOAT,
 			allowNull: false,
     },
     // 原来的价格
 		oldprice: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.FLOAT,
 			allowNull: true,
     },
     // 价格标志

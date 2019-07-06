@@ -4,10 +4,10 @@
       <img :src="subjectData.image" alt="" class="left-image">
     </div>
     <div class="right">
-      <div v-text="subjectData.text" class="first"></div>
+      <div v-text="subjectData.title" class="first"></div>
       <div class="second">
         <span v-text="subjectData.who" class="small bgc"></span>
-        <span v-text="subjectData.introduction" class="small bgc"></span>
+        <span v-text="subjectData.intc" class="small bgc"></span>
       </div>
       <div class="third">
         <span class="small gray">{{ subjectData.number1 }}讲 | {{ subjectData.number2 }}人已学习</span>
@@ -15,9 +15,9 @@
       <div class="fourth">
         <span v-text="subjectData.label"
         v-if="subjectData.label ? true : false" class="small label"></span>
-        <span class="orange">￥{{ subjectData.newPrice }}</span>
+        <span class="orange">￥{{ subjectData.newprice }}</span>
         <span v-if="subjectData.oldPrice ? true : false"
-        class="small line gray">￥{{ subjectData.oldPrice }}</span>
+        class="small line gray">￥{{ subjectData.oldprice }}</span>
         <span class="orange way small" v-text="subjectData.way"></span>
       </div>
     </div>

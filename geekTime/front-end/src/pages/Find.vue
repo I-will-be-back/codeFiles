@@ -8,25 +8,24 @@
       </mt-search>
       <mt-swipe :auto="2000" class="swipe">
         <mt-swipe-item v-for="(item, index) in swipeImage" :key="index">
-          <img :src="item" alt="" class="swipe-image">
+          <img :src="item.image" alt="" class="swipe-image">
         </mt-swipe-item>
       </mt-swipe>
       <div class="column">
         <div class="column-left">
           <span>{{column}}&nbsp;></span>
-          <articleTitle :src="articleDatas[0][0]" :content="articleDatas[1][0]" />
+          <articleTitle :src="recommendDatas.icon" :content="recommendDatas.content" />
         </div>
-        <img src="../assets/images/person/person1.jpg" class="column-right" alt="">
+        <img :src="recommendDatas.image" class="column-right" alt="">
       </div>
       <div class="news">
         <nameAndMore :data="{name: '极客新闻', more: '查看全部', url: ''}" />
         <div class="news-article">
-          <articleTitle v-for="index in 4" :key="index"
-          :src="articleDatas[0][0]" :content="articleDatas[1][index]" />
+          <articleTitle v-for="(item, index) in articleDatas" :key="index"
+          :src="item.icon" :content="item.title" />
         </div>
       </div>
       <aline />
-      <imageLink index=0 />
       <div class="mall">
         <nameAndMore :data="{name: '极客商城', more: '进入商城', url: ''}" />
         <div class="shop-container">
@@ -34,15 +33,12 @@
         </div>
       </div>
       <aline />
-      <imageLink index=1 />
-      <!-- <div class="advisory">资讯</div> -->
       <div class="recommended-read">
         <nameAndMore :data="{name: '推荐阅读', more: '全部专栏', url: ''}" />
-        <course v-for="(item, index) in courseDatas" :course="item" :key="index" class="course" />
+        <course v-for="(item, index) in readDatas" :course="item" :key="index" class="course" />
         <changeOne />
       </div>
       <aline />
-      <imageLink index=2 />
       <div class="popular-course">
         <nameAndMore :data="{name: '热门课程', more: '全部课程', url: ''}" />
         <course v-for="(item, index) in courseDatas" :course="item" :key="index" class="course" />
@@ -55,15 +51,12 @@
           <aLesson v-for="(item, index) in lessonDatas" :data="item" :key="index" />
         </div>
         <changeOne />
-        <!-- <img src="" alt=""> -->
       </div>
       <aline />
       <div class="hot-topics">
         <nameAndMore :data="{name: '热点专题', more: '查看全部', url: ''}" />
         <div class="hot-image">
-          <img v-for="(item, index) in 2"
-          :src="swipeImage[index]"
-          :key="index" alt="">
+          <img v-for="(item, index) in topicImage" :src="item.image" :key="index" alt="">
         </div>
       </div>
       <aline />
@@ -81,11 +74,9 @@
 
 <script>
 import BScroll from 'better-scroll';
-// import titleComponent from '../components/Title';
 import nameAndMore from '../components/NameAndMore';
 import articleTitle from '../components/ArticleTitle';
 import aline from '../components/common/ALine';
-import imageLink from '../components/ImageLink';
 import shop from '../components/Shop';
 import course from '../components/Course';
 import changeOne from '../components/ChangeOne';
@@ -95,11 +86,9 @@ import aLesson from '../components/ALesson';
 export default {
   name: 'find',
   components: {
-    // titleComponent,
     nameAndMore,
     articleTitle,
     aline,
-    imageLink,
     shop,
     course,
     changeOne,
@@ -111,17 +100,20 @@ export default {
       column: '',
       scrollY: 0,
       flag: false,
-      // titleData: {},
       swipeImage: [],
-      shopDatas: [],
+      iconDatas: [],
+      recommendDatas: {},
       articleDatas: [],
+      shopDatas: [],
+      readDatas: [],
       courseDatas: [],
-      videoDatas: [],
       lessonDatas: [],
+      topicImage: [],
+      videoDatas: [],
     };
   },
   methods: {
-    _initScroll() {
+    initScroll() {
       this.scroll = new BScroll(this.$refs.scroll, {
         click: true,
         probeType: 3,
@@ -139,142 +131,59 @@ export default {
     },
   },
   created() {
-    this.$http.get('http://localhost:3000/top/1').then((res) => {
+    this.$emit('scrollEvent', true);
+    this.column = '卖桃者说';
+    this.$http.get('http://localhost:3000/find/1').then((res) => {
       if (res.status === 200) {
-        this.$emit('fatherData', { text: res.data.data.title });
-        this.$emit('scrollEvent', true);
+        const findData = res.data;
+        this.$emit('fatherData', findData.topData);
+        // console.log(findData);
+        this.swipeImage = findData.carousel;
+        this.iconDatas = findData.icon;
+        this.recommendDatas = findData.recommend;
+        this.recommendDatas = {
+          ...this.recommendDatas,
+          icon: this.iconDatas[0].image,
+        };
+        this.articleDatas = findData.news;
+        this.articleDatas = this.articleDatas.map(article => ({
+          ...article,
+          icon: this.iconDatas[0].image,
+        }));
+        this.shopDatas = findData.shop;
+        this.shopDatas = this.shopDatas.map(item => ({
+          ...item,
+          size: false,
+        }));
+        this.readDatas = findData.read;
+        this.readDatas = this.readDatas.map(item => ({
+          ...item,
+          icon: this.iconDatas[1].image,
+          size: true,
+        }));
+        this.courseDatas = findData.course;
+        this.courseDatas = this.courseDatas.map(item => ({
+          ...item,
+          icon: this.iconDatas[1].image,
+          size: true,
+        }));
+        this.lessonDatas = findData.lesson;
+        this.lessonDatas.map(alesson => ({
+          ...alesson,
+          size: false,
+        }));
+        this.topicImage = findData.topic;
+        this.videoDatas = findData.video;
+        this.videoDatas = this.videoDatas.map(item => ({
+          ...item,
+          size: false,
+          text: `共${item.number}个视频`,
+        }));
       }
     });
-
-    /* eslint-disable */
-    this.column = '卖桃者说';
-    /* eslint-disable */
-    this.swipeImage = [
-      require('../assets/images/swipe/swipe1.jpg'),
-      require('../assets/images/swipe/swipe2.jpg'),
-      require('../assets/images/swipe/swipe3.jpg'),
-      require('../assets/images/swipe/swipe4.jpg'),
-      require('../assets/images/swipe/swipe5.jpg'),
-    ];
-    this.shopDatas = [
-      {
-        src: require('../assets/images/book/book1.png'),
-        size: false,
-        title: '[热]测试工程师',
-        text: '全栈技术进阶',
-        money: 69,
-      },
-      {
-        src: require('../assets/images/book/book2.png'),
-        size: false,
-        title: '超大防水鼠标垫',
-        text: '极客时间精选',
-        money: 39,
-      },
-      {
-        src: require('../assets/images/book/book3.png'),
-        size: false,
-        title: '充值礼品卡',
-        text: '90充100',
-        money: 90,
-      },
-    ];
-    this.articleDatas = [
-      [
-        require('../assets/images/find/play.png'),
-        require('../assets/images/find/text.png'),
-      ],
-      [
-        '第38期|为什么获得提拔的不是你?',
-        '蚂蚁金服CTO程立: 数字金融关键技术的挑战',
-        'VIPKID用户增长200倍背后的技术管理方法',
-        '人生中的3钟成功思维',
-        '观点:为什么不选择GO语言',
-      ],
-    ];
-    this.courseDatas = [
-      {
-        content: '趣味网络协议',
-        size: true,
-        title: '第26讲|云中的网络安全:虽然不是土豪',
-        text: '刘超|网易研究院云计算技术部...',
-        src: this.articleDatas[0][1],
-        people: require('../assets/images/person-opacity/person1.png'),
-      },
-      {
-        size: true,
-        content: '从0开始学习为服务',
-        title: '32|微服务混合云部署实践',
-        text: '胡忠想|微博技术专家',
-        src: this.articleDatas[0][1],
-        people: require('../assets/images/person-opacity/person2.png'),
-      },
-      {
-        size: true,
-        content: '软件工程之类',
-        title: '16|怎样才能写出好项目文档?',
-        text: '宝玉|Groipon资深工程师,微...',
-        src: this.articleDatas[0][1],
-        people: require('../assets/images/person-opacity/person3.png'),
-      }
-    ];
-    this.videoDatas = [
-      {
-        size: false,
-        title: '十年',
-        text: '公6个视频',
-        src: require('../assets/images/lectureHall/icon1.png'),
-      },
-      {
-        size: false,
-        title: '十年',
-        text: '公6个视频',
-        src: require('../assets/images/lectureHall/icon1.png'),
-      },
-      {
-        size: false,
-        title: '十年',
-        text: '公6个视频',
-        src: require('../assets/images/lectureHall/icon1.png'),
-      },
-      {
-        size: false,
-        title: '十年',
-        text: '公6个视频',
-        src: require('../assets/images/lectureHall/icon1.png'),
-      },
-    ];
-    this.lessonDatas = [
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-    ];
-    /* eslint-disable */
     // 页面渲染完成才能执行
     this.$nextTick(() => {
-      /* eslint-disable */
-      this._initScroll();
+      this.initScroll();
     });
   },
 };
@@ -287,7 +196,7 @@ export default {
   height 100vh
   overflow hidden
 .content
-  padding-bottom 18vh
+  padding-bottom 16vh
   // 搜索框
   .search
     margin-top 1vh

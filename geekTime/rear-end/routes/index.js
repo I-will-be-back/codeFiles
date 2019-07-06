@@ -1,5 +1,8 @@
 const router = require('koa-router')()
-// const FindController = require('../controllers/find');
+const findController = require('../controllers/find');
+const lectureHallController = require('../controllers/lectureHall');
+const studyController = require('../controllers/study');
+const mineController = require('../controllers/mine');
 
 
 router.get('/', async (ctx) => {
@@ -8,6 +11,9 @@ router.get('/', async (ctx) => {
   })
 })
 
-// router.get('/find/:id', FindController.detail)
+router.get('/find/:id', findController.search)
+router.get('/lectureHall', lectureHallController.search);
+router.get('/study/:id', studyController.search);
+router.get('/mine/:id', mineController.search);
 
 module.exports = router

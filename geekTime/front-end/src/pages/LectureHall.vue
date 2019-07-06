@@ -2,16 +2,16 @@
   <div class="lectureHall" ref="lectureHall">
     <div class="content">
       <div class="nav-container">
-        <div v-for="(item, index) in navData" :key="index" class="nav">
-          <img :src="item.img" alt="">
-          <p v-text="item.text"></p>
+        <div v-for="(item, index) in navDatas" :key="index" class="nav">
+          <img :src="item.image" alt="">
+          <p v-text="item.title"></p>
         </div>
       </div>
       <nameAndMore :data="{name: '专栏', more:'查看全部', url: '' }" />
-      <subject v-for="(item, index) in subjectData" :key="index" :subjectData="item" />
+      <subject v-for="(item, index) in columndata" :key="index" :subjectData="item" />
       <aline />
       <nameAndMore :data="{name: '视频课程', more:'查看全部', url: '' }" />
-      <subject v-for="(item, index) in subjectData" :key="index + 3" :subjectData="item" />
+      <subject v-for="(item, index) in videoCoursedata" :key="index + 3" :subjectData="item" />
       <aline />
       <nameAndMore :data="{name: '每日一课', more: '查看全部', url: ''}" />
       <div class="lesson-container">
@@ -19,7 +19,7 @@
       </div>
       <aline />
       <nameAndMore :data="{name: '微课', more:'查看全部', url: '' }" />
-      <subject v-for="(item, index) in subjectData" :key="index + 6" :subjectData="item" />
+      <subject v-for="(item, index) in microLessondata" :key="index + 6" :subjectData="item" />
     </div>
   </div>
 </template>
@@ -39,13 +39,15 @@ export default {
   data() {
     return {
       flag: false,
-      navData: [],
-      subjectData: [],
+      navDatas: [],
       lessonDatas: [],
+      columndata: [],
+      videoCoursedata: [],
+      microLessondata: [],
     };
   },
   methods: {
-    _initScroll() {
+    initScroll() {
       this.scroll = new BScroll(this.$refs.lectureHall, {
         click: true,
         probeType: 3,
@@ -62,94 +64,32 @@ export default {
     },
   },
   created() {
-    this.$emit('fatherData', { text: '讲堂' });
     this.$emit('scrollEvent', true);
-    /* eslint-disable */
-    this.navData = [
-      {
-        img: require('../assets/images/lectureHall/icon1.png'),
-        text: '专栏',
-      },
-      {
-        img: require('../assets/images/lectureHall/icon2.png'),
-        text: '视频教程',
-      },
-      {
-        img: require('../assets/images/lectureHall/icon3.png'),
-        text: '每日一课',
-      },
-      {
-        img: require('../assets/images/lectureHall/icon1.png'),
-        text: '微课',
-      },
-    ];
-    this.subjectData = [
-      {
-        image: require('../assets/images/person/person1.jpg'),
-        text: '编辑训练营',
-        who: '总编室',
-        introduction: '极客邦科技总编室',
-        number1: 43,
-        number2: 2811,
-        newPrice: 68,
-        oldPrice: 99,
-        way: '试读',
-      },
-      {
-        image: require('../assets/images/person/person2.jpg'),
-        text: '编辑训练营',
-        who: '总编室',
-        introduction: '极客邦科技总编室',
-        number1: 43,
-        number2: 2811,
-        label: '限时',
-        newPrice: 68,
-        way: '试读',
-      },
-      {
-        image: require('../assets/images/person/person3.jpg'),
-        text: '编辑训练营',
-        who: '总编室',
-        introduction: '极客邦科技总编室',
-        number1: 43,
-        number2: 2811,
-        label: '限时',
-        newPrice: 68,
-        oldPrice: 99,
-        way: '试读',
+    this.$http.get('http://localhost:3000/lectureHall/').then((res) => {
+      if (res.status === 200) {
+        const lectureHallData = res.data;
+        this.$emit('fatherData', lectureHallData.topData);
+        this.navDatas = lectureHallData.nav;
+        this.lessonDatas = lectureHallData.lesson;
+        this.lessonDatas = this.lessonDatas.map(alesson => ({
+          ...alesson,
+          size: false,
+        }));
+        // console.log(this.lessonDatas);
+        lectureHallData.costCourse.forEach((item) => {
+          if (item.type === 1) {
+            // console.log(111);
+            this.columndata.push(item);
+          } else if (item.type === 2) {
+            this.videoCoursedata.push(item);
+          } else if (item.type === 3) {
+            this.microLessondata.push(item);
+          }
+        });
       }
-    ];
-    this.lessonDatas = [
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-      {
-        size: false,
-        title: '创业型公司2周年自研通用扩展自动...',
-        text: '沈剑 58速递CTO',
-        src: require('../assets/images/swipe/swipe5.jpg'),
-      },
-    ];
-    /* eslint-disable */
+    });
     this.$nextTick(() => {
-      /* eslint-disable */
-      this._initScroll();
-      /* eslint-disable */
+      this.initScroll();
     });
   },
 };
@@ -161,7 +101,7 @@ export default {
   height 100vh
   overflow hidden
 .content
-  padding-bottom 18vh
+  padding-bottom 16vh
   .nav-container
     display flex
     justify-content space-around
@@ -174,5 +114,5 @@ export default {
     display flex
     justify-content space-around
     flex-wrap wrap
-    margin-bottom 3vh     
+    margin-bottom 3vh
 </style>
