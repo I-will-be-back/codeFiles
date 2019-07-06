@@ -1,22 +1,22 @@
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('user', {
+  return sequelize.define('userfunction', {
 		id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		// 头像
-		avatar: {
+		// 图标
+		icon: {
 			type: DataTypes.STRING,
 			allowNull: false,
-    },
-    // 用户名
-		name: {
+		},
+		// 用户功能
+		text: {
 			type: DataTypes.STRING,
 			allowNull: false,
-    },
-    // 电话
-		tel: {
+		},
+		// 额外信息
+		more: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},

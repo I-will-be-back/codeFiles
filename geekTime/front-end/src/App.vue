@@ -31,14 +31,18 @@ export default {
   },
   created() {
     /* eslint-disable */
-    this.titleData = {
-      flag: false,
-      text: '',
-      img1: require('./assets/images/find/shake.png'),
-      img2: require('./assets/images/find/bar-chart.png'),
-      visibility1: true,
-      visibility2: true,
-    };
+    this.$http.get('http://localhost:3000/top/3').then((res) => {
+      if (res.status === 200) {
+        this.titleData = {
+          flag: false,
+          text: '',
+          img1: res.data.data.image1,
+          img2: res.data.data.image2,
+          visibility1: true,
+          visibility2: true,
+        };
+      }
+    });
     /* eslint-disable */
   },
 };

@@ -1,9 +1,9 @@
-const Model = require('../models/top');
+const Model = require('../models/recommend');
 
 class Controller {
 	static async create(ctx) {
 		const req = ctx.request.body;
-		if (req.image2) {
+		if (req.content && req.image) {
 			try {
 				await Model.createDetail(req);
 				ctx.response.status = 200;
@@ -17,13 +17,14 @@ class Controller {
 			ctx.body = { code: 200, msg: '参数不齐全' }
 		}
 	}
+
 	static async search(ctx) {
 		const id = ctx.params.id;
 		if (id) {
 			try {
-				const topData = await Model.getDetail(id);
+				const recommend = await Model.getDetail(id);
 				ctx.response.status = 200;
-				ctx.body = { code: 200, msg: '查询成功', topData }
+				ctx.body = { code: 200, msg: '查询成功', recommend }
 			} catch (err) {
 				ctx.response.status = 412;
 				ctx.body = { code: 412, msg: '查询失败', err }

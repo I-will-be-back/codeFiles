@@ -1,19 +1,13 @@
 const router = require('koa-router')()
+// const FindController = require('../controllers/find');
 
-router.get('/', async (ctx, next) => {
+
+router.get('/', async (ctx) => {
   await ctx.render('index', {
-    title: 'Hello Koa 2!'
+    title: 'welcome to geektime!'
   })
 })
 
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
-})
-
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-})
+// router.get('/find/:id', FindController.detail)
 
 module.exports = router

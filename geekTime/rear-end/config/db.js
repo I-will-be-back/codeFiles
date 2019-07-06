@@ -41,18 +41,19 @@ const sequelize = new Sequelize('geektime', 'root', '123456', {
   //   dialectOptions: {
   //     collate: 'utf8_general_ci'
   //   },
-  //   timestamps: true
+  // 这个参数为true是MySQL会自动给每条数据添加createdAt和updateAt字段
+  timestamps: true,
   // },
   // 是否同步
   // sync: { force: true },
   // 连接池配置
   pool: {
-    max: 5,
+    max: 30,
     min: 0,
     idle: 30000,
     // acquire: 60000,
   },
-  // timezone: "+08:00"
+  timezone: "+08:00"
   // isolationLevel: Transaction.ISOLATION_LEVELS.REPEATABLE_READ
 })
 

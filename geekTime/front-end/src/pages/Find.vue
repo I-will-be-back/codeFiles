@@ -1,7 +1,6 @@
 <template>
   <div class="find" ref="scroll">
     <div class="content">
-     <!-- <titleComponent :titleData="titleData" /> -->
       <mt-search class="search"
         :show="false"
         cancel-text="取消"
@@ -140,18 +139,11 @@ export default {
     },
   },
   created() {
-    this.$emit('fatherData', { text: '发现' });
-    this.$emit('scrollEvent', true);
-
     this.$http.get('http://localhost:3000/top/1').then((res) => {
-      console.log('res', res.data.data);
-      // if (res.data.errno === 0) {
-      //   this.goods = res.data.data
-      //   this.$nextTick(() => { //页面渲染完成才能执行
-      //     this._initScroll()
-      //     this._calculateHeight()
-      //   })
-      // }
+      if (res.status === 200) {
+        this.$emit('fatherData', { text: res.data.data.title });
+        this.$emit('scrollEvent', true);
+      }
     });
 
     /* eslint-disable */

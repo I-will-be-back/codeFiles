@@ -1,22 +1,27 @@
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('user', {
+  return sequelize.define('read', {
 		id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		// 头像
-		avatar: {
+		// 小标题
+		text: {
 			type: DataTypes.STRING,
 			allowNull: false,
     },
-    // 用户名
-		name: {
+    // 标题
+		title: {
 			type: DataTypes.STRING,
 			allowNull: false,
     },
-    // 电话
-		tel: {
+    // 内容概要
+		content: {
+			type: DataTypes.STRING,
+			allowNull: false,
+    },
+    // 人物图片
+		image: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
